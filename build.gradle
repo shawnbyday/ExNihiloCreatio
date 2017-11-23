@@ -96,6 +96,9 @@ dependencies
     compileOnly "org.projectlombok:lombok:1.16.10"
 
     deobfCompile ('CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.0.+')
+
+    // https://mvnrepository.com/artifact/org.yaml/snakeyaml
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.19'
 }
 
 processResources

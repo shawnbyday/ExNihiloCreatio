@@ -1,0 +1,62 @@
+Sieve:
+  exnihilocreatio:block_netherrack_crushed:0:
+    string:
+      - name: minecraft:blaze_powder:5
+        chance: 0.05
+
+      - name: exnihilocreatio:item_ore_gold:2
+        chance: 0.05
+
+      - name: exnihilocreatio:item_ore_gold:3
+        chance: 0.05
+
+      - name: minecraft:blaze_powder:1
+        chance: 0.05
+
+      - name: minecraft:blaze_powder:2
+        chance: 0.05
+
+  minecraft:coal_block:0:
+    flint:
+      - name: minecraft:potato
+        chance: 0.05
+
+Crook:
+  minecraft:leaves:2:
+    - item: exnihilocreatio:item_material:2
+      chance: 0.1
+      fortuneChance: 0.0
+
+    - item: minecraft:apple
+      chance: 4.3
+      fortuneChance: 0.0
+
+Compost: # as a list
+  minecraft:dirt:
+  - item: minecraft:leaves2:1
+    value: 0.125
+    color: D2691E # with or without 0x before it?
+
+  - item: minecraft:leaves:5
+    value: 0.125
+    color: 0xFFFFFF
+
+BarrelBlacklistWood:
+  - Potato
+  - Lava
+  - Gunfuel
+
+#FluidBlockTransform:
+#  - fluidName: water
+#    amount: 200
+#    input:
+#      name: exnihilocreatio:block_dust:0
+#      amount: 23
+#    output:
+#      name: minecraft:clay:0
+#
+#  - fluidName: lava
+#    input:
+#      name: minecraft:redstone:0
+#    output:
+#      name: minecraft:netherrack

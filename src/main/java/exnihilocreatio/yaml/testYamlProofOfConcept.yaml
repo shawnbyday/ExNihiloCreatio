@@ -1,0 +1,177 @@
+Sieve: # default dumping like this
+  exnihilocreatio:block_netherrack_crushed:0:
+    string:
+      - name: minecraft:blaze_powder
+        meta: 0
+        chance: 0.05
+        meshLevel: 3
+
+      - name: exnihilocreatio:item_ore_gold
+        meta: 0
+        chance: 0.05
+        meshLevel: 3
+
+      - name: exnihilocreatio:item_ore_gold
+        meta: 0
+        chance: 0.05
+        meshLevel: 3
+
+      - name: minecraft:blaze_powder
+        meta: 0
+        chance: 0.05
+        meshLevel: 3
+
+      - name: minecraft:blaze_powder
+        meta: 1
+        chance: 0.05
+        meshLevel: 2
+
+  minecraft:coal_block:0:
+    - name: minecraft:potato
+      meta: 0
+      chance: 0.05
+      meshLevel: 3
+
+Sieve: # or default dumping like this
+  exnihilocreatio:block_netherrack_crushed:2:
+  - {name: 'minecraft:blaze_powd4er', meta: 0, chance: 0.05, meshLevel: 3}
+  - {name: 'exnihilocreatio:item_or34e_gold', meta: 0, chance: 0.05, meshLevel: 3}
+  - {name: 'exnihilocreatio:it23e23m_ore_gold', meta: 0, chance: 0.05, meshLevel: 3}
+  - {name: 'minecraft:234blaze_powder', meta: 0, chance: 0.05, meshLevel: 3}
+  - {name: 'minecraft:blaze_p2owder', meta: 1, chance: 0.05, meshLevel: 2}
+  minecraft:coal_block:6:
+  - {name: 'minecraft:potato2', meta: 0, chance: 0.05, meshLevel: 3}
+
+Crook: # as a list of blocks
+  - block: minecraft:leaves
+    drops:
+    - item: exnihilocreatio:item_material
+      amount: 1
+      meta: 2
+      chance: 0.1
+      fortuneChance: 0.0
+    - item: minecraft:apple
+      amount: 2
+      meta: 4
+      chance: 0.1
+      fortuneChance: 0.0
+
+  - block: minecraft:leaves2
+    drops:
+    - item: exnihilocreatio:item_material
+      amount: 1
+      meta: 2
+      chance: 0.1
+      fortuneChance: 0.2
+
+Crook: # or as a Map with the blockname as a key (like the Sieve)
+  minecraft:leaves:2:
+    - item: exnihilocreatio:item_material
+      amount: 1
+      meta: 2
+      chance: 0.1
+      fortuneChance: 0.0
+    - item: minecraft:apple
+      amount: 2
+      meta: 4
+      chance: 0.1
+      fortuneChance: 0.0
+
+  minecraft:leaves2:-1:
+    - item: exnihilocreatio:item_material
+      amount: 1
+      meta: 2
+      chance: 0.1
+      fortuneChance: 0.0
+
+FluidBlockTransform:
+  - fluidName: water
+    amount: 200
+    input: exnihilocreatio:block_dust:0
+    output: minecraft:clay:0 # directly as name or as a list?
+
+  - fluidName: water
+    amount: 200
+    input_ore: blockIron # maybe with optional ore name?
+    output: railcraft:steel:34
+
+  - fluidName: lava
+    input:
+      name: minecraft:redstone:0
+      amount: 20 #do we need an input / output amount?
+    output:
+      name: minecraft:netherrack
+      amount: 10
+
+Compost: # or as a Map with name of the block as the key?
+  minecraft:leaves2:0:
+    value: 0.125
+    color: { r: 0.72156864, g: 0.78039217, b: 0.32941177, a: 1.0} # each value of RGB or html colors?
+    compostBlock: minecraft:dirt:0
+
+  minecraft:leaves2:1:
+    value: 0.125
+    color: 0xD2691E # HTML Colors/int Colors or float colors as each to their own value?
+    compostBlock: {
+      name: "minecraft:dirt",
+      meta: 0
+    }
+
+Compost: # as a list
+  - block: minecraft:leaves2:1
+    value: 0.125
+    color: D2691E # with or without 0x before it?
+    compostBlock: minecraft:dirt:0
+
+  - block: minecraft:leaves:5
+    value: 0.125
+    color: 0x232232
+    compostBlock: minecraft:dirt:0
+
+BarrelBlacklistWooden: # I guess this is the only syntax that makes sense here
+  - lava
+  - fire_water
+  - rocket_fuel
+
+BarrelBlacklistStone:
+  - UnicornJuice
+
+CrucibleStone: # here again, MAP
+  minecraft:cobblestone:0:
+    fluid: lava
+    amount: 250
+
+  minecraft:stone:0:
+    fluid: lava
+    amount: 250
+
+CrucibleStone: # or List
+  - block: minecraft:cobblestone:0:
+    fluid: lava
+    amount: 250
+
+  - block: minecraft:stone:0:
+    fluid: lava
+    amount: 250
+
+Ores: # again: List?
+  - name: gold
+    color: { "r": 1.0, "g": 1.0, "b": 0.0, "a": 1.0}
+    result: { name: "minecraft:gold_ingot", meta: 0}
+
+  - name: gold2
+    ore: blub # optional ore
+    color: 0xFFFF00 # again, same thing hex or all values?
+    result: minecraft:gold_ingot:0
+
+Ores: # or Map?
+  gold:
+    color: { "r": 1.0, "g": 1.0, "b": 0.0, "a": 1.0}
+    result: { name: "minecraft:gold_ingot", meta: 0}
+
+  gold2:
+    ore: blub # optional ore
+    color: 0xFFFF00 # again, same thing hex or all values?
+    result: minecraft:gold_ingot:0
+
+# Missing: Hammer, Heat, Milk, FluidTransform, FluidItemFluid, FluidOnTop
