@@ -51,14 +51,43 @@ public class ExNihiloRecipes {
      */
     public List<String> BarrelBlacklistWood = new ArrayList<>();
 
+    /**
+     * StoneCrucible:
+     *   lava:
+     *   - item: minecraft:cobblestone:0
+     *     displayOverwrite: minecraft:dirt         (optional)(display overwrite should match with the rest of the group or it might cause some strange effects)
+     *     itemGroup: stone                         (optional)
+     *     amount: 90
+     *   - item: arg
+     *     amount: 3443
+     */
     public Map<String, List<YamlCrucibleRecipe>> StoneCrucible = new HashMap<>();
 
+    /**
+     * Same as stone
+     */
+    public Map<String, List<YamlCrucibleRecipe>> WoodCrucible = new HashMap<>();
 
-    public void addRecipeToSieve(String blockName, String dropName, int meta, int meshLevel, float chance){
-        /*Map<String, List<HashMap<String, Object>>> blockMap = Sieve.getOrDefault(blockName, new HashMap<>());
+    /**
+     * OreRegistry:
+     * - name: osmium
+     *   color: B4BED4
+     *   result: mekanism:ingot:1
+     *   displayname: Opposmium                             (optional)
+     *   oredict: Oppo      (... leads to dustOppo, etc)    (optional)
+     *
+     */
+    public List<YamlOreRegistryRecipe> OreRegistry = new ArrayList<>();
 
-        blockMap.getOrDefault()*/
-    }
+    /**
+     * Heat:
+     *   minecraft:flowing_lava: 3         (no '   -   ' on the new lines)
+     *   minecraft:lava: 3.3
+     *   minecraft:fire: 4
+     *   minecraft:torch: 1
+     */
+    public HashMap<String, Double> Heat = new HashMap<>();
+
 
     @Override
     public String toString() {
@@ -69,3 +98,14 @@ public class ExNihiloRecipes {
                 '}';
     }
 }
+
+
+/* TODO:
+FluidBlockTransformerRegistry
+FluidItemFluidRegistry
+FluidOnTopRegistry
+FluidTransformRegistry
+HammerRegistry
+MilkEntityRegistry
+
+ */
