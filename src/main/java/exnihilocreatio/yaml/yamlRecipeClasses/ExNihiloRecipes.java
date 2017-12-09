@@ -35,9 +35,23 @@ public class ExNihiloRecipes {
      */
     public Map<String, List<YamlCompostRecipe>> Compost = new HashMap<>();
 
+    /**
+     * BarrelBlacklistStone:
+     *  - bla
+     *  - bla
+     *  - blub
+     */
     public List<String> BarrelBlacklistStone = new ArrayList<>();
 
+    /**
+     * BarrelBlacklistWood:
+     *  - bla
+     *  - bla
+     *  - blub
+     */
     public List<String> BarrelBlacklistWood = new ArrayList<>();
+
+    public Map<String, List<YamlCrucibleRecipe>> StoneCrucible = new HashMap<>();
 
 
     public void addRecipeToSieve(String blockName, String dropName, int meta, int meshLevel, float chance){

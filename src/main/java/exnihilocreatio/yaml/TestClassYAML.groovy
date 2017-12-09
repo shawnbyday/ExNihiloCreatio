@@ -16,7 +16,7 @@ class TestClassYAML {
         def con = new Constructor(ExNihiloRecipes.class)
 
         Yaml yaml = new Yaml(con)
-        def f = new File("src\\yaml\\testYaml.yaml")
+        def f = new File("src\\main\\java\\exnihilocreatio\\yaml\\testYaml.yaml")
         ExNihiloRecipes ex = yaml.load(new FileInputStream(f))
         System.out.println("ex.toString() = " + ex.toString())
 

@@ -46,6 +46,13 @@ BarrelBlacklistWood:
   - Lava
   - Gunfuel
 
+StoneCrucible:
+  lava:
+    - item: muuh
+      amount: 90
+    - item: arg
+      amount: 3443
+
 #FluidBlockTransform:
 #  - fluidName: water
 #    amount: 200
