@@ -30,8 +30,9 @@ public class CrookBase extends ItemTool implements ICrook, IHasModel {
         return true;
     }
 
+
     @Override
-    public float getStrVsBlock(@Nonnull ItemStack stack, IBlockState state) {
-        return ExNihiloRegistryManager.CROOK_REGISTRY.isRegistered(state.getBlock()) ? this.efficiencyOnProperMaterial : 1.0F;
+    public float getDestroySpeed(@Nonnull ItemStack stack, IBlockState state) {
+        return ExNihiloRegistryManager.CROOK_REGISTRY.isRegistered(state.getBlock()) ? this.efficiency : 1.0F;
     }
 }

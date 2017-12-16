@@ -9,9 +9,8 @@ import javax.annotation.Nonnull;
 import java.awt.*;
 
 public class RenderOrePiece implements IItemColor {
-
     @Override
-    public int getColorFromItemstack(@Nonnull ItemStack stack, int tintIndex) {
+    public int colorMultiplier(@Nonnull ItemStack stack, int tintIndex) {
         if (stack.isEmpty())
             return 0;
 
@@ -27,5 +26,4 @@ public class RenderOrePiece implements IItemColor {
         }
         return Color.WHITE.getRGB();
     }
-
 }
