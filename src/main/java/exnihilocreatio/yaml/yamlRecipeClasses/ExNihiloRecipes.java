@@ -88,6 +88,19 @@ public class ExNihiloRecipes {
      */
     public HashMap<String, Double> Heat = new HashMap<>();
 
+    /**
+     * Hammer:
+     *   minecraft:gravel:0:
+     *   - item: minecraft:sand:2
+     *     chance: 2.3
+     *     miningLevel: 2
+     *     fortuneChance: 2.6
+     *   - item: minecraft:sand:4
+     *     chance: 2.1
+     *     miningLevel: 5
+     *     fortuneChance: 2.6
+     */
+    public HashMap<String, List<YamlHammerRecipe>> Hammer = new HashMap<>();
 
     @Override
     public String toString() {
@@ -107,5 +120,4 @@ FluidOnTopRegistry
 FluidTransformRegistry
 HammerRegistry
 MilkEntityRegistry
-
  */

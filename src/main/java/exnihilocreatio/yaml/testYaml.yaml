@@ -63,6 +63,28 @@ Heat:
   minecraft:fire: 4
   minecraft:torch: 1
 
+Hammer:
+  minecraft:gravel:0:
+    - item: minecraft:sand:2
+      chance: 2.3
+      miningLevel: 2
+      fortuneChance: 2.6
+    - item: minecraft:sand:2
+      chance: 2.3
+      miningLevel: 2
+      fortuneChance: 2.6
+  minecraft:gravel:3:
+    - item: minecraft:sand:7
+      chance: 0.3
+      miningLevel: 8
+      fortuneChance: 1
+    - item: minecraft:sand:87
+      chance: 2.3
+      miningLevel: 2
+      fortuneChance: 2.6
+
+
+
 
 #FluidBlockTransform:
 #  - fluidName: water
