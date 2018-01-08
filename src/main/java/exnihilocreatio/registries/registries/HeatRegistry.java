@@ -3,6 +3,7 @@ package exnihilocreatio.registries.registries;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomBlockInfoJson;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.util.BlockInfo;
@@ -51,5 +52,10 @@ public class HeatRegistry extends BaseRegistryMap<BlockInfo, Integer> {
         for (Map.Entry<String, Integer> entry : gsonInput.entrySet()) {
             registry.put(new BlockInfo(entry.getKey()), entry.getValue());
         }
+    }
+
+    @Override
+    public void registerToYaml(ExNihiloRecipes ex, BlockInfo key, Integer value) {
+
     }
 }

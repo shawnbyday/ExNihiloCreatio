@@ -1,6 +1,6 @@
-package exnihilocreatio.yaml
+package exnihilocreatio.recipes.yaml
 
-import exnihilocreatio.yaml.yamlRecipeClasses.ExNihiloRecipes
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes
 import org.yaml.snakeyaml.DumperOptions
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor

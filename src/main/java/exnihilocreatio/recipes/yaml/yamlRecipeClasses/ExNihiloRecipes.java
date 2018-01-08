@@ -1,4 +1,4 @@
-package exnihilocreatio.yaml.yamlRecipeClasses;
+package exnihilocreatio.recipes.yaml.yamlRecipeClasses;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,6 +118,5 @@ FluidBlockTransformerRegistry
 FluidItemFluidRegistry
 FluidOnTopRegistry
 FluidTransformRegistry
-HammerRegistry
 MilkEntityRegistry
  */

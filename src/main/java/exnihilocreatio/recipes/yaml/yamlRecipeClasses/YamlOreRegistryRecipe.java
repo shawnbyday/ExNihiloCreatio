@@ -1,4 +1,4 @@
-package exnihilocreatio.yaml.yamlRecipeClasses;
+package exnihilocreatio.recipes.yaml.yamlRecipeClasses;
 
 public class YamlOreRegistryRecipe {
     public String name;

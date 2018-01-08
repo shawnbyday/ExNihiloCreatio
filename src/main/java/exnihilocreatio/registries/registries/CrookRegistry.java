@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomBlockInfoJson;
 import exnihilocreatio.json.CustomItemStackJson;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.registries.types.CrookReward;
@@ -40,6 +41,11 @@ public class CrookRegistry extends BaseRegistryMap<BlockInfo, List<CrookReward>>
         }
 
         list.addAll(value);
+    }
+
+    @Override
+    public void registerToYaml(ExNihiloRecipes ex, BlockInfo key, List<CrookReward> value) {
+
     }
 
     public void register(BlockInfo info, ItemStack reward, float chance, float fortuneChance) {

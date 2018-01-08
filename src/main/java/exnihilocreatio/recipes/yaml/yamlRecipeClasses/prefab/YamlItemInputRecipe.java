@@ -1,4 +1,4 @@
-package exnihilocreatio.yaml.yamlRecipeClasses.prefab;
+package exnihilocreatio.recipes.yaml.yamlRecipeClasses.prefab;
 
 public class YamlItemInputRecipe {
     /**
@@ -12,5 +12,9 @@ public class YamlItemInputRecipe {
 
     public int getItemMeta(){
         return -1;
+    }
+
+    public YamlItemInputRecipe(String item) {
+        this.item = item;
     }
 }

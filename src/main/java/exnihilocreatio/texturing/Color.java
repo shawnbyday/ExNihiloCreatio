@@ -60,4 +60,11 @@ public class Color {
         return color;
     }
 
+    public String toHex(boolean ignoreAlpha) {
+        int i = toInt();
+        if (ignoreAlpha)
+            i &= 0xffffff;
+
+        return Integer.toHexString(i);
+    }
 }

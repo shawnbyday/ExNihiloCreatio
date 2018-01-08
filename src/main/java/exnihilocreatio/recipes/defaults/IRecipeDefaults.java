@@ -3,7 +3,9 @@ package exnihilocreatio.recipes.defaults;
 import exnihilocreatio.registries.registries.*;
 
 public interface IRecipeDefaults {
-    String getMODID();
+    default String getMODID() {return null;}
+
+    default String getFileName() {return null;}
 
     default void registerCompost(CompostRegistry registry){}
 

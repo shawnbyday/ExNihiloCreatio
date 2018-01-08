@@ -3,6 +3,7 @@ package exnihilocreatio.registries.registries;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomItemStackJson;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.registries.types.HammerReward;
@@ -101,5 +102,10 @@ public class HammerRegistry extends BaseRegistryMap<BlockInfo, List<HammerReward
         }
 
         return ret;
+    }
+
+    @Override
+    public void registerToYaml(ExNihiloRecipes ex, BlockInfo key, List<HammerReward> value) {
+
     }
 }

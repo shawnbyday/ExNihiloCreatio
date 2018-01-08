@@ -1,6 +1,8 @@
 package exnihilocreatio.registries.registries.prefab;
 
 import com.google.gson.Gson;
+import exnihilocreatio.recipes.yaml.YamlLoader;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
 import exnihilocreatio.registries.manager.IDefaultRecipeProvider;
 
 import java.util.ArrayList;
@@ -19,5 +21,8 @@ public abstract class BaseRegistryList<V> extends BaseRegistry<List<V>> {
 
     public void register(V value) {
         registry.add(value);
+        YamlLoader.registerRecipeToMap(ex -> registerToYaml(ex, value));
     }
+
+    public abstract void registerToYaml(ExNihiloRecipes ex, V value);
 }

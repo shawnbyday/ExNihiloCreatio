@@ -10,6 +10,8 @@ import exnihilocreatio.handlers.HandlerCrook;
 import exnihilocreatio.handlers.HandlerHammer;
 import exnihilocreatio.networking.PacketHandler;
 import exnihilocreatio.proxy.CommonProxy;
+import exnihilocreatio.recipes.yaml.YamlLoader;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
 import exnihilocreatio.registries.RegistryReloadedEvent;
 import exnihilocreatio.registries.manager.ExNihiloDefaultRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
@@ -28,6 +30,7 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.File;
+import java.io.FileFilter;
 
 @Mod(modid = ExNihiloCreatio.MODID, name = "Ex Nihilo Creatio", version = ExNihiloCreatio.VERSION, acceptedMinecraftVersions = "[1.12, 1.13)")
 @Mod.EventBusSubscriber
@@ -123,6 +126,11 @@ public class ExNihiloCreatio {
         ExNihiloRegistryManager.CRUCIBLE_STONE_REGISTRY.loadJson(new File(configDirectory, "CrucibleRegistryStone.json"));
         ExNihiloRegistryManager.CRUCIBLE_WOOD_REGISTRY.loadJson(new File(configDirectory, "CrucibleRegistryWood.json"));
         ExNihiloRegistryManager.MILK_ENTITY_REGISTRY.loadJson(new File(configDirectory, "MilkEntityRegistry.json"));
+
+        File[] yamlFiles = configDirectory.listFiles((dir, name) -> name.endsWith(".yaml"));
+        for (File yamlFile : yamlFiles) {
+            ExNihiloRecipes ex = YamlLoader.loadYaml(yamlFile);
+        }
 
         MinecraftForge.EVENT_BUS.post(new RegistryReloadedEvent());
 

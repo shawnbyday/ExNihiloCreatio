@@ -4,6 +4,9 @@ import com.google.common.collect.Maps;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomItemInfoJson;
+import exnihilocreatio.recipes.yaml.YamlLoader;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlCompostRecipe;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.registries.types.Compostable;
@@ -26,6 +29,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class CompostRegistry extends BaseRegistryMap<ItemInfo, Compostable> {
@@ -120,5 +125,13 @@ public class CompostRegistry extends BaseRegistryMap<ItemInfo, Compostable> {
         for (Map.Entry<String, Compostable> entry : gsonInput.entrySet()) {
             registry.put(new ItemInfo(entry.getKey()), entry.getValue());
         }
+    }
+
+    @Override
+    public void registerToYaml(ExNihiloRecipes ex, ItemInfo key, Compostable value) {
+        String itemName = key.toString();
+        List<YamlCompostRecipe> list = ex.Compost.getOrDefault(itemName, new ArrayList<>());
+        list.add(new YamlCompostRecipe(itemName, value.getValue(), value.getColor().toHex(true)));
+        ex.Compost.put(itemName, list);
     }
 }

@@ -3,6 +3,7 @@ package exnihilocreatio.registries.registries;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomItemInfoJson;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryList;
 import exnihilocreatio.registries.types.FluidItemFluid;
@@ -60,5 +61,10 @@ public class FluidItemFluidRegistry extends BaseRegistryList<FluidItemFluid> {
         List<FluidItemFluid> gsonInput = gson.fromJson(fr, new TypeToken<List<FluidItemFluid>>() {
         }.getType());
         registry.addAll(gsonInput);
+    }
+
+    @Override
+    public void registerToYaml(ExNihiloRecipes ex, FluidItemFluid value) {
+
     }
 }

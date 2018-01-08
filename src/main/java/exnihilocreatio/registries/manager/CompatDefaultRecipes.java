@@ -7,6 +7,8 @@ import net.minecraftforge.fml.common.Loader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static exnihilocreatio.recipes.yaml.YamlLoader.CURRENT_FILE_NAME;
+
 public class CompatDefaultRecipes {
     private static List<IRecipeDefaults> MODS = new ArrayList<>();
     static {
@@ -22,16 +24,18 @@ public class CompatDefaultRecipes {
     }
 
     public void registerCompost(CompostRegistry registry) {
-        for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+        genericRegister(mod -> mod.registerCompost(registry));
+
+        /*for(IRecipeDefaults mod : MODS){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerCompost(registry);
             }
-        }
+        }*/
     }
 
     public void registerCrook(CrookRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerCrook(registry);
             }
         }
@@ -39,7 +43,7 @@ public class CompatDefaultRecipes {
 
     public void registerSieve(SieveRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerSieve(registry);
             }
         }
@@ -47,7 +51,7 @@ public class CompatDefaultRecipes {
 
     public void registerHammer(HammerRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerHammer(registry);
             }
         }
@@ -55,7 +59,7 @@ public class CompatDefaultRecipes {
 
     public void registerHeat(HeatRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerHeat(registry);
             }
         }
@@ -63,7 +67,7 @@ public class CompatDefaultRecipes {
 
     public void registerBarrel(BarrelLiquidBlacklistRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerBarrelLiquidBlacklist(registry);
             }
         }
@@ -71,7 +75,7 @@ public class CompatDefaultRecipes {
 
     public void registerFluidOnTop(FluidOnTopRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerFluidOnTop(registry);
             }
         }
@@ -79,7 +83,7 @@ public class CompatDefaultRecipes {
 
     public void registerOreChunks(OreRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerOreChunks(registry);
             }
         }
@@ -87,7 +91,7 @@ public class CompatDefaultRecipes {
 
     public void registerFluidTransform(FluidTransformRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerFluidTransform(registry);
             }
         }
@@ -95,7 +99,7 @@ public class CompatDefaultRecipes {
 
     public void registerFluidBlockTransform(FluidBlockTransformerRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerFluidBlockTransform(registry);
             }
         }
@@ -103,7 +107,7 @@ public class CompatDefaultRecipes {
 
     public void registerFluidItemFluid(FluidItemFluidRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerFluidItemFluid(registry);
             }
         }
@@ -111,7 +115,7 @@ public class CompatDefaultRecipes {
 
     public void registerCrucibleStone(CrucibleRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerCrucibleStone(registry);
             }
         }
@@ -119,7 +123,7 @@ public class CompatDefaultRecipes {
 
     public void registerCrucibleWood(CrucibleRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerCrucibleWood(registry);
             }
         }
@@ -128,9 +132,29 @@ public class CompatDefaultRecipes {
 
     public void registerMilk(MilkEntityRegistry registry) {
         for(IRecipeDefaults mod : MODS){
-            if(Loader.isModLoaded(mod.getMODID())){
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
                 mod.registerMilk(registry);
             }
         }
+    }
+
+    /**
+     * Helper function to not have too much duplicate code
+     */
+    private void genericRegister(IGenericRegister genericRegister){
+        for(IRecipeDefaults mod : MODS){
+            CURRENT_FILE_NAME = mod.getFileName();
+            if (CURRENT_FILE_NAME == null) CURRENT_FILE_NAME = mod.getMODID();
+
+            if(mod.getMODID() == null || Loader.isModLoaded(mod.getMODID())){
+                genericRegister.registerGeneric(mod);
+            }
+
+            CURRENT_FILE_NAME = null;
+        }
+    }
+
+    private interface IGenericRegister {
+        void registerGeneric(IRecipeDefaults mod);
     }
 }
