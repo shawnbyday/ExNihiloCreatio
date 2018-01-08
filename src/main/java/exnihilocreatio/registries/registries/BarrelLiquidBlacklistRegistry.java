@@ -2,7 +2,7 @@ package exnihilocreatio.registries.registries;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.GsonBuilder;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 
@@ -41,7 +41,7 @@ public class BarrelLiquidBlacklistRegistry extends BaseRegistryMap<Integer, List
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, Integer key, List<String> value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, Integer key, List<String> value) {
 
     }
 }

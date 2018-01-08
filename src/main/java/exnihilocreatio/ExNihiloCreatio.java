@@ -11,7 +11,7 @@ import exnihilocreatio.handlers.HandlerHammer;
 import exnihilocreatio.networking.PacketHandler;
 import exnihilocreatio.proxy.CommonProxy;
 import exnihilocreatio.recipes.yaml.YamlLoader;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.RegistryReloadedEvent;
 import exnihilocreatio.registries.manager.ExNihiloDefaultRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
@@ -30,7 +30,6 @@ import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.File;
-import java.io.FileFilter;
 
 @Mod(modid = ExNihiloCreatio.MODID, name = "Ex Nihilo Creatio", version = ExNihiloCreatio.VERSION, acceptedMinecraftVersions = "[1.12, 1.13)")
 @Mod.EventBusSubscriber
@@ -114,6 +113,8 @@ public class ExNihiloCreatio {
         configsLoaded = true;
 
         ExNihiloRegistryManager.COMPOST_REGISTRY.loadJson(new File(configDirectory, "CompostRegistry.json"));
+
+        ExNihiloRegistryManager.COMPOST_REGISTRY.loadJson(new File(configDirectory, "CompostRegistry.json"));
         ExNihiloRegistryManager.CROOK_REGISTRY.loadJson(new File(configDirectory, "CrookRegistry.json"));
         ExNihiloRegistryManager.SIEVE_REGISTRY.loadJson(new File(configDirectory, "SieveRegistry.json"));
         ExNihiloRegistryManager.HAMMER_REGISTRY.loadJson(new File(configDirectory, "HammerRegistry.json"));
@@ -127,12 +128,19 @@ public class ExNihiloCreatio {
         ExNihiloRegistryManager.CRUCIBLE_WOOD_REGISTRY.loadJson(new File(configDirectory, "CrucibleRegistryWood.json"));
         ExNihiloRegistryManager.MILK_ENTITY_REGISTRY.loadJson(new File(configDirectory, "MilkEntityRegistry.json"));
 
-        File[] yamlFiles = configDirectory.listFiles((dir, name) -> name.endsWith(".yaml"));
-        for (File yamlFile : yamlFiles) {
-            ExNihiloRecipes ex = YamlLoader.loadYaml(yamlFile);
+
+        YamlLoader.saveToAllYamlFromMap(true);
+
+        File[] yamlFiles = configDirectory.listFiles((dir, name) -> name.endsWith(".yaml") || name.endsWith(".yml"));
+
+        if (yamlFiles != null) {
+            for (File yamlFile : yamlFiles) {
+                YamlExNihiloRecipes ex = YamlLoader.loadYaml(yamlFile);
+            }
         }
 
         MinecraftForge.EVENT_BUS.post(new RegistryReloadedEvent());
+
 
         if (Loader.isModLoaded("crafttweaker")) {
             CrTIntegration.loadIActions();

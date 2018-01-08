@@ -5,7 +5,7 @@ import exnihilocreatio.recipes.yaml.yamlRecipeClasses.prefab.YamlItemChanceRecip
 public class YamlSieveRecipe extends YamlItemChanceRecipe {
 
 
-    public YamlSieveRecipe(String item) {
-        super(item);
+    public YamlSieveRecipe(String item, float chance) {
+        super(item, chance);
     }
 }

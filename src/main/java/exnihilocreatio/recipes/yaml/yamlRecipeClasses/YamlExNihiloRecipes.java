@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ExNihiloRecipes {
+public class YamlExNihiloRecipes {
     /**
      * Sieve:
      *      mod:block:meta: (or maaaabye later 'ore:orename')
@@ -104,7 +104,7 @@ public class ExNihiloRecipes {
 
     @Override
     public String toString() {
-        return "ExNihiloRecipes{" +
+        return "YamlExNihiloRecipes{" +
                 "Sieve=" + Sieve +
                 ", Crook=" + Crook +
                 ", Compost=" + Compost +

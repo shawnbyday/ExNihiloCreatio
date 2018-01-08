@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomBlockInfoJson;
 import exnihilocreatio.json.CustomItemInfoJson;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.registries.types.Siftable;
@@ -135,7 +135,7 @@ public class SieveRegistry extends BaseRegistryMap<BlockInfo, ArrayList<Siftable
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, BlockInfo key, ArrayList<Siftable> value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, BlockInfo key, ArrayList<Siftable> value) {
 
     }
 }

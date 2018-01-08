@@ -4,9 +4,10 @@ public class YamlItemChanceRecipe extends YamlItemInputRecipe {
     /**
      * Chance for the drops
      */
-    public float chance;
+    public float chance = 0;
 
-    public YamlItemChanceRecipe(String item) {
+    public YamlItemChanceRecipe(String item, float chance) {
         super(item);
+        this.chance = chance;
     }
 }

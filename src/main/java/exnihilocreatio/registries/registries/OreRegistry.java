@@ -9,7 +9,7 @@ import exnihilocreatio.items.ore.Ore;
 import exnihilocreatio.json.CustomBlockInfoJson;
 import exnihilocreatio.json.CustomItemInfoJson;
 import exnihilocreatio.json.CustomOreJson;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryList;
 import exnihilocreatio.texturing.Color;
@@ -83,7 +83,7 @@ public class OreRegistry extends BaseRegistryList<Ore> {
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, Ore value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, Ore value) {
 
     }
 

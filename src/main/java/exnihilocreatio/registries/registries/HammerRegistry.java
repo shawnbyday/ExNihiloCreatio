@@ -3,7 +3,8 @@ package exnihilocreatio.registries.registries;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomItemStackJson;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlHammerRecipe;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.registries.types.HammerReward;
@@ -55,7 +56,6 @@ public class HammerRegistry extends BaseRegistryMap<BlockInfo, List<HammerReward
         BlockInfo key = new BlockInfo(state);
         if (wildcard)
             key.setMeta(-1);
-
         List<HammerReward> rewards = registry.get(key);
 
         if (rewards == null) {
@@ -63,7 +63,8 @@ public class HammerRegistry extends BaseRegistryMap<BlockInfo, List<HammerReward
         }
 
         rewards.add(new HammerReward(reward, miningLevel, chance, fortuneChance));
-        registry.put(key, rewards);
+
+        register(key, rewards);
     }
 
     public List<ItemStack> getRewardDrops(Random random, IBlockState block, int miningLevel, int fortuneLevel) {
@@ -105,7 +106,14 @@ public class HammerRegistry extends BaseRegistryMap<BlockInfo, List<HammerReward
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, BlockInfo key, List<HammerReward> value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, BlockInfo key, List<HammerReward> value) {
+        List<YamlHammerRecipe> list = new ArrayList<>();
 
+        for (HammerReward hammerReward : value) {
+            String name = hammerReward.getStack().getItem().toString() + ":" + hammerReward.getStack().getMetadata();
+            list.add(new YamlHammerRecipe(name, hammerReward.getMiningLevel(), hammerReward.getChance(), hammerReward.getChance()));
+        }
+
+        ex.Hammer.put(key.toString(), list);
     }
 }

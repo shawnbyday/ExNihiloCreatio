@@ -1,7 +1,9 @@
 package exnihilocreatio.recipes.yaml;
 
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.ExNihiloCreatio;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import lombok.Getter;
+import org.apache.commons.io.IOUtils;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
@@ -13,25 +15,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class YamlLoader {
-    private static Constructor constructor = new Constructor(ExNihiloRecipes.class);
+    private static Constructor constructor = new Constructor(YamlExNihiloRecipes.class);
     private static Representer rep = new Representer();
     private static DumperOptions options = new DumperOptions();
 
     @Getter
-    private static Map<String, ExNihiloRecipes> recipesToSave = new HashMap<>();
+    private static Map<String, YamlExNihiloRecipes> recipesToSave = new HashMap<>();
 
     @Getter
-    private static ExNihiloRecipes noNameRecipes = new ExNihiloRecipes();
+    private static YamlExNihiloRecipes noNameRecipes = new YamlExNihiloRecipes();
 
     public static String CURRENT_FILE_NAME = null;
 
 
     static {
-        rep.addClassTag(ExNihiloRecipes.class, Tag.MAP);
+        rep.addClassTag(YamlExNihiloRecipes.class, Tag.MAP);
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.AUTO); // TODO: Config option for BLOCK OR AUTO
     }
 
-    public static ExNihiloRecipes loadYaml(File file){
+    public static YamlExNihiloRecipes loadYaml(File file){
         try {
             Yaml yaml = new Yaml(constructor);
             return yaml.load(new FileInputStream(file));
@@ -42,19 +44,29 @@ public class YamlLoader {
         return null;
     }
 
-    public static void saveYaml(ExNihiloRecipes ex, File file, boolean overwrite){
+    public static void saveYaml(YamlExNihiloRecipes ex, File file, boolean overwrite){
         Yaml yamlDump = new Yaml(rep, options);
         String output = yamlDump.dump(ex);
 
         if (!file.exists() || overwrite){
+            PrintWriter writer = null;
             try {
                 if (file.createNewFile()){
-                    PrintWriter writer = new PrintWriter(file);
+                    writer = new PrintWriter(file);
                     writer.write(output);
+                    writer.flush();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                IOUtils.closeQuietly(writer);
             }
+        }
+    }
+
+    public static void saveToAllYamlFromMap(boolean overwrite){
+        for (Map.Entry<String, YamlExNihiloRecipes> entry : recipesToSave.entrySet()) {
+            saveYaml(entry.getValue(), new File(ExNihiloCreatio.configDirectory, entry.getKey() + ".yaml"), overwrite);
         }
     }
 
@@ -62,7 +74,7 @@ public class YamlLoader {
         if (CURRENT_FILE_NAME == null){
             iRegisterRecipe.register(noNameRecipes);
         } else {
-            ExNihiloRecipes ex = recipesToSave.getOrDefault(CURRENT_FILE_NAME, new ExNihiloRecipes());
+            YamlExNihiloRecipes ex = recipesToSave.getOrDefault(CURRENT_FILE_NAME, new YamlExNihiloRecipes());
             iRegisterRecipe.register(ex);
             recipesToSave.put(CURRENT_FILE_NAME, ex);
         }
@@ -71,7 +83,7 @@ public class YamlLoader {
     }
 
     @FunctionalInterface
-    public interface IRegisterRecipe{
-        void register(ExNihiloRecipes ex);
+    public interface IRegisterRecipe {
+        void register(YamlExNihiloRecipes ex);
     }
 }

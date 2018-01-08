@@ -3,7 +3,7 @@ package exnihilocreatio.registries.registries;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomItemInfoJson;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryList;
 import exnihilocreatio.registries.types.FluidBlockTransformer;
@@ -64,7 +64,7 @@ public class FluidBlockTransformerRegistry extends BaseRegistryList<FluidBlockTr
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, FluidBlockTransformer value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, FluidBlockTransformer value) {
 
     }
 }

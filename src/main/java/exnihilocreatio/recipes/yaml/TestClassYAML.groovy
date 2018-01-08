@@ -1,6 +1,6 @@
 package exnihilocreatio.recipes.yaml
 
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes
 import org.yaml.snakeyaml.DumperOptions
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
@@ -13,15 +13,15 @@ class TestClassYAML {
     }
 
     static void testLoad(){
-        def con = new Constructor(ExNihiloRecipes.class)
+        def con = new Constructor(YamlExNihiloRecipes.class)
 
         Yaml yaml = new Yaml(con)
         def f = new File("src\\main\\java\\exnihilocreatio\\yaml\\testYaml.yaml")
-        ExNihiloRecipes ex = yaml.load(new FileInputStream(f))
+        YamlExNihiloRecipes ex = yaml.load(new FileInputStream(f))
         System.out.println("ex.toString() = " + ex.toString())
 
         def rep = new Representer()
-        rep.addClassTag(ExNihiloRecipes.class, Tag.MAP)
+        rep.addClassTag(YamlExNihiloRecipes.class, Tag.MAP)
         DumperOptions options = new DumperOptions()
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.AUTO) // TODO: Config option for BLOCK OR AUTO
 

@@ -3,7 +3,7 @@ package exnihilocreatio.registries.registries;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomBlockInfoJson;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryList;
 import exnihilocreatio.registries.types.Milkable;
@@ -100,7 +100,7 @@ public class MilkEntityRegistry extends BaseRegistryList<Milkable> {
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, Milkable value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, Milkable value) {
 
     }
 }

@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import exnihilocreatio.json.CustomBlockInfoJson;
 import exnihilocreatio.json.CustomItemInfoJson;
-import exnihilocreatio.recipes.yaml.yamlRecipeClasses.ExNihiloRecipes;
+import exnihilocreatio.recipes.yaml.yamlRecipeClasses.YamlExNihiloRecipes;
 import exnihilocreatio.registries.manager.IDefaultRecipeProvider;
 import exnihilocreatio.registries.registries.prefab.BaseRegistryMap;
 import exnihilocreatio.registries.types.Meltable;
@@ -43,7 +43,7 @@ public class CrucibleRegistry extends BaseRegistryMap<ItemInfo, Meltable> {
     }
 
     @Override
-    public void registerToYaml(ExNihiloRecipes ex, ItemInfo key, Meltable value) {
+    public void registerToYaml(YamlExNihiloRecipes ex, ItemInfo key, Meltable value) {
 
     }
 
