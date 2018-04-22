@@ -11,18 +11,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModFluids {
 
     public static final FluidWitchWater fluidWitchwater = new FluidWitchWater();
-    public static BlockFluidWitchwater blockWitchwater = new BlockFluidWitchwater();
+    public static final BlockFluidWitchwater blockWitchwater = new BlockFluidWitchwater();
 
-    public static FluidMilk fluidMilk;
-    public static BlockFluidMilk blockMilk;
+    public static final FluidMilk fluidMilk = new FluidMilk();
+    public static final BlockFluidMilk blockMilk = new BlockFluidMilk();
 
     public static void init() {
         FluidRegistry.addBucketForFluid(fluidWitchwater);
-
-        // Milk
-        fluidMilk = new FluidMilk();
-        blockMilk = new BlockFluidMilk();
-        FluidRegistry.addBucketForFluid(fluidMilk);
     }
 
     @SideOnly(Side.CLIENT)
