@@ -22,6 +22,7 @@ public final class ExNihiloRegistryManager {
     public static final List<IOreDefaultRegistryProvider> ORE_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<IMilkEntityDefaultRegistryProvider> MILK_ENTITY_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<IBarrelLiquidBlacklistDefaultRegistryProvider> BARREL_LIQUID_BLACKLIST_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
+    public static final List<IBurnOutDefaultRegistryProvider> BURNOUT_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     //endregion
 
     public static final CompostRegistry COMPOST_REGISTRY = new CompostRegistry();
@@ -38,6 +39,7 @@ public final class ExNihiloRegistryManager {
     public static final CrucibleRegistry CRUCIBLE_STONE_REGISTRY = new CrucibleRegistry(CRUCIBLE_STONE_DEFAULT_REGISTRY_PROVIDERS);
     public static final CrucibleRegistry CRUCIBLE_WOOD_REGISTRY = new CrucibleRegistry(CRUCIBLE_WOOD_DEFAULT_REGISTRY_PROVIDERS);
     public static final MilkEntityRegistry MILK_ENTITY_REGISTRY = new MilkEntityRegistry();
+    public static final BurnOutRegistry BURNOUT_REGISTRY = new BurnOutRegistry();
 
 
     //region >>>> DEFAULT RECIPE REGISTERS
@@ -56,6 +58,10 @@ public final class ExNihiloRegistryManager {
 
     public static void registerCrookDefaultRecipeHandler(ICrookDefaultRegistryProvider provider) {
         CROOK_DEFAULT_REGISTRY_PROVIDERS.add(provider);
+    }
+
+    public static void registerBurnOutDefaultRecipeHandler(IBurnOutDefaultRegistryProvider provider) {
+        BURNOUT_DEFAULT_REGISTRY_PROVIDERS.add(provider);
     }
 
     public static void registerCrucibleStoneDefaultRecipeHandler(ICrucibleStoneDefaultRegistryProvider provider) {

@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:bedrock"
+  },
+  "variants": {
+    "normal": [
+      { "model": "minecraft:bedrock" },
+      { "model": "minecraft:bedrock_mirrored" },
+      { "model": "minecraft:bedrock", "y": 180 },
+      { "model": "minecraft:bedrock_mirrored", "y": 180 }
+    ],
+    "inventory": [
+      {}
+    ]
+  }
+}

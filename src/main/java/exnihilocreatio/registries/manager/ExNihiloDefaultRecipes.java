@@ -11,6 +11,7 @@ public class ExNihiloDefaultRecipes {
         ExNihiloRegistryManager.registerHammerDefaultRecipeHandler(new HammerDefaults());
         ExNihiloRegistryManager.registerCompostDefaultRecipeHandler(new CompostDefaults());
         ExNihiloRegistryManager.registerCrookDefaultRecipeHandler(new CrookDefaults());
+        ExNihiloRegistryManager.registerBurnOutDefaultRecipeHandler(new BurnOutDefaults());
         ExNihiloRegistryManager.registerHeatDefaultRecipeHandler(new HeatDefaults());
         ExNihiloRegistryManager.registerOreDefaultRecipeHandler(new OreDefaults());
         ExNihiloRegistryManager.registerBarrelLiquidBlacklistDefaultHandler(new BarrelLiquidBlacklistDefaults());
@@ -35,6 +36,13 @@ public class ExNihiloDefaultRecipes {
         @Override
         public void registerRecipeDefaults(CrookRegistry registry) {
             compat.registerCrook(registry);
+        }
+    }
+
+    private static class BurnOutDefaults implements IBurnOutDefaultRegistryProvider {
+        @Override
+        public void registerRecipeDefaults(BurnOutRegistry registry) {
+            compat.registerBurnOut(registry);
         }
     }
 

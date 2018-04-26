@@ -34,6 +34,11 @@ public class CompatDefaultRecipes {
                 .forEach(mod -> mod.registerCrook(registry));
     }
 
+    public void registerBurnOut(BurnOutRegistry registry) {
+        MODS.stream().filter(mod -> Loader.isModLoaded(mod.getMODID()))
+                .forEach(mod -> mod.registerBurnOut(registry));
+    }
+
     public void registerSieve(SieveRegistry registry) {
         MODS.stream().filter(mod -> Loader.isModLoaded(mod.getMODID()))
                 .forEach(mod -> mod.registerSieve(registry));

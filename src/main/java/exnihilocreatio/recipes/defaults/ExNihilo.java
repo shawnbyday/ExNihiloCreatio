@@ -95,6 +95,10 @@ public class ExNihilo implements IRecipeDefaults {
         registry.register("treeLeaves", ItemResource.getResourceStack(ItemResource.SILKWORM), 0.1f, 0f);
     }
 
+    public void registerBurnOut(BurnOutRegistry registry) {
+
+    }
+
     public void registerSieve(SieveRegistry registry) {
 
         //Stone Pebble

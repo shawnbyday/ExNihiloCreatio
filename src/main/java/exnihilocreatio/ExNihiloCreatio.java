@@ -6,6 +6,7 @@ import exnihilocreatio.compatibility.crafttweaker.CrTIntegration;
 import exnihilocreatio.compatibility.tconstruct.CompatTConstruct;
 import exnihilocreatio.config.ModConfig;
 import exnihilocreatio.entities.ENEntities;
+import exnihilocreatio.handlers.HandlerBurnOut;
 import exnihilocreatio.handlers.HandlerCrook;
 import exnihilocreatio.handlers.HandlerHammer;
 import exnihilocreatio.networking.PacketHandler;
@@ -65,6 +66,7 @@ public class ExNihiloCreatio {
 
         MinecraftForge.EVENT_BUS.register(new HandlerHammer());
         MinecraftForge.EVENT_BUS.register(new HandlerCrook());
+        MinecraftForge.EVENT_BUS.register(new HandlerBurnOut());
 
         if (ModConfig.mechanics.enableBarrels) {
             BarrelModeRegistry.registerDefaults();
@@ -98,6 +100,7 @@ public class ExNihiloCreatio {
 
         ExNihiloRegistryManager.COMPOST_REGISTRY.loadJson(new File(configDirectory, "CompostRegistry.json"));
         ExNihiloRegistryManager.CROOK_REGISTRY.loadJson(new File(configDirectory, "CrookRegistry.json"));
+        ExNihiloRegistryManager.BURNOUT_REGISTRY.loadJson(new File(configDirectory, "BurnOutRegistry.json"));
         ExNihiloRegistryManager.SIEVE_REGISTRY.loadJson(new File(configDirectory, "SieveRegistry.json"));
         ExNihiloRegistryManager.HAMMER_REGISTRY.loadJson(new File(configDirectory, "HammerRegistry.json"));
         ExNihiloRegistryManager.HEAT_REGISTRY.loadJson(new File(configDirectory, "HeatRegistry.json"));
