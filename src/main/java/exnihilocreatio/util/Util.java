@@ -1,6 +1,7 @@
 package exnihilocreatio.util;
 
 import exnihilocreatio.blocks.BlockInfestingLeaves;
+import exnihilocreatio.config.ModConfig;
 import exnihilocreatio.texturing.Color;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -204,4 +205,9 @@ public class Util {
         return true;
     }
 
+    public static float getDropChance(float chance) {
+        if (ModConfig.world.isSkyWorld)
+            return chance;
+        else return chance / 100f * (float) ModConfig.world.normalDropPercent;
+    }
 }
