@@ -18,23 +18,21 @@ import javax.annotation.Nullable;
 
 @ObjectHolder("draconicevolution")
 public class DraconicEvolution implements IRecipeDefaults {
-    //C58FF0
     @Nullable
     @ObjectHolder("draconium_dust")
     public static final Item DRACO_DUST = null;
     @Nullable
-    @ObjectHolder("draconiumingot")
+    @ObjectHolder("draconium_ingot")
     public static final Item DRACO_INGOT = null;
 
     @Getter
     public String MODID = "draconicevolution";
 
     public void registerSieve(SieveRegistry registry) {
-        OreRegistry oreRegistry = ExNihiloRegistryManager.ORE_REGISTRY;
-        ItemOre ore = oreRegistry.getOreItem("draconium");
+        ItemOre ore = ExNihiloRegistryManager.ORE_REGISTRY.getOreItem("draconium");
         if(ore != null){
-            registry.register(new BlockInfo(ModBlocks.endstoneCrushed), new ItemInfo(ore), Util.getDropChance(0.04f), BlockSieve.MeshType.IRON.getID());
-            registry.register(new BlockInfo(ModBlocks.netherrackCrushed), new ItemInfo(ore), Util.getDropChance(0.04f), BlockSieve.MeshType.DIAMOND.getID());
+            registry.register(new BlockInfo(ModBlocks.netherrackCrushed), new ItemInfo(ore), Util.getDropChance(0.04f), BlockSieve.MeshType.IRON.getID());
+            registry.register(new BlockInfo(ModBlocks.endstoneCrushed), new ItemInfo(ore), Util.getDropChance(0.06f), BlockSieve.MeshType.DIAMOND.getID());
         }
     }
 
