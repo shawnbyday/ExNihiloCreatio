@@ -3,6 +3,7 @@ package exnihilocreatio.registries.registries;
 import com.google.common.collect.Lists;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import exnihilocreatio.compatibility.jei.burnout.BurnOutRecipe;
 import exnihilocreatio.json.CustomIngredientJson;
 import exnihilocreatio.json.CustomItemStackJson;
 import exnihilocreatio.registries.ingredient.IngredientUtil;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class BurnOutRegistry extends BaseRegistryMap<Ingredient, NonNullList<BurnOutReward>> {
 
@@ -104,6 +106,10 @@ public class BurnOutRegistry extends BaseRegistryMap<Ingredient, NonNullList<Bur
         return list;
     }
 
+    public List<BurnOutReward> getRewards(Ingredient ingredient) {
+        return registry.get(ingredient);
+    }
+
     @Override
     public void registerEntriesFromJSON(FileReader fr) {
         HashMap<String, NonNullList<BurnOutReward>> gsonInput = gson.fromJson(fr, new TypeToken<HashMap<String, NonNullList<BurnOutReward>>>() {
@@ -121,7 +127,14 @@ public class BurnOutRegistry extends BaseRegistryMap<Ingredient, NonNullList<Bur
     }
 
     @Override
-    public List<?> getRecipeList() {
-        return Lists.newLinkedList();
+    public List<BurnOutRecipe> getRecipeList() {
+        List<BurnOutRecipe> recipes = Lists.newLinkedList();
+
+        getRegistry().keySet().forEach(ingredient ->  {
+                BurnOutRecipe recipe = new BurnOutRecipe(ingredient);
+                recipes.add(recipe);
+        });
+
+        return recipes;
     }
 }

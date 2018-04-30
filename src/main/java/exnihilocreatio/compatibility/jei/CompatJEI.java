@@ -11,6 +11,8 @@ import exnihilocreatio.compatibility.jei.barrel.fluidontop.FluidOnTopRecipe;
 import exnihilocreatio.compatibility.jei.barrel.fluidontop.FluidOnTopRecipeCategory;
 import exnihilocreatio.compatibility.jei.barrel.fluidtransform.FluidTransformRecipe;
 import exnihilocreatio.compatibility.jei.barrel.fluidtransform.FluidTransformRecipeCategory;
+import exnihilocreatio.compatibility.jei.burnout.BurnOutRecipe;
+import exnihilocreatio.compatibility.jei.burnout.BurnOutRecipeCategory;
 import exnihilocreatio.compatibility.jei.crucible.CrucibleHeatSourceRecipeCategory;
 import exnihilocreatio.compatibility.jei.crucible.CrucibleRecipe;
 import exnihilocreatio.compatibility.jei.crucible.CrucibleRecipeCategory;
@@ -24,6 +26,7 @@ import exnihilocreatio.util.LogUtil;
 import mezz.jei.api.*;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -51,6 +54,7 @@ public class CompatJEI implements IModPlugin {
         registry.addRecipeCategories(new FluidBlockTransformRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new CompostRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new CrucibleRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new BurnOutRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
 
 
         registry.addRecipeCategories(new CrucibleHeatSourceRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -73,6 +77,7 @@ public class CompatJEI implements IModPlugin {
         registerHeat(registry);
         registerSieve(registry);
         registerStoneCrucible(registry);
+        registerBurnOut(registry);
     }
 
     private void registerCompost(@Nonnull IModRegistry registry) {
@@ -147,6 +152,14 @@ public class CompatJEI implements IModPlugin {
         registry.addRecipes(crucibleRecipes, CrucibleRecipeCategory.UID);
         registry.addRecipeCatalyst(new ItemStack(ModBlocks.crucibleStone, 1, 1), CrucibleRecipeCategory.UID);
         LogUtil.info("JEI: Stone Crucible Recipes Loaded:       " + crucibleRecipes.size());
+    }
+
+    private void registerBurnOut(@Nonnull IModRegistry registry) {
+        List<BurnOutRecipe> burnOutRecipes = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRecipeList();
+
+        registry.addRecipes(burnOutRecipes, BurnOutRecipeCategory.UID);
+        registry.addRecipeCatalyst(new ItemStack(Items.FLINT_AND_STEEL, 1, 0), BurnOutRecipeCategory.UID);
+        LogUtil.info("JEI: Burn Out Recipes Loaded:       " + burnOutRecipes.size());
     }
 
     @Override
