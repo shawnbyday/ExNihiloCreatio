@@ -1,7 +1,7 @@
 package exnihilocreatio.handlers;
 
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
-import exnihilocreatio.registries.types.BurnOutReward;
+import exnihilocreatio.registries.types.BlockDropReward;
 import net.minecraft.block.BlockFire;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.DamageSource;
@@ -33,8 +33,8 @@ public class HandlerBurnOut {
             if (world.isAirBlock(pos) &&
                     ExNihiloRegistryManager.BURNOUT_REGISTRY.isRegistered(world.getBlockState(pos.down()).getBlock()) &&
                     worldTime > fires.get(posIdx)){
-                List<BurnOutReward> rewards = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRewards(world.getBlockState(pos.down()));
-                for(BurnOutReward reward : rewards){
+                List<BlockDropReward> rewards = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRewards(world.getBlockState(pos.down()));
+                for(BlockDropReward reward : rewards){
                     if(RANDOM.nextFloat() <= reward.getChance()){
                         double dx = RANDOM.nextFloat() * 0.5F + 0.25D;
                         double dy = RANDOM.nextFloat() * 0.5F + 0.25D;

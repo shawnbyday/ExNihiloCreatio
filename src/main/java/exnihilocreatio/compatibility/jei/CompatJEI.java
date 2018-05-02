@@ -11,8 +11,8 @@ import exnihilocreatio.compatibility.jei.barrel.fluidontop.FluidOnTopRecipe;
 import exnihilocreatio.compatibility.jei.barrel.fluidontop.FluidOnTopRecipeCategory;
 import exnihilocreatio.compatibility.jei.barrel.fluidtransform.FluidTransformRecipe;
 import exnihilocreatio.compatibility.jei.barrel.fluidtransform.FluidTransformRecipeCategory;
-import exnihilocreatio.compatibility.jei.burnout.BurnOutRecipe;
-import exnihilocreatio.compatibility.jei.burnout.BurnOutRecipeCategory;
+import exnihilocreatio.compatibility.jei.blockdrop.BlockDropRecipe;
+import exnihilocreatio.compatibility.jei.blockdrop.BlockDropRecipeCategory;
 import exnihilocreatio.compatibility.jei.crucible.CrucibleHeatSourceRecipeCategory;
 import exnihilocreatio.compatibility.jei.crucible.CrucibleRecipe;
 import exnihilocreatio.compatibility.jei.crucible.CrucibleRecipeCategory;
@@ -54,7 +54,7 @@ public class CompatJEI implements IModPlugin {
         registry.addRecipeCategories(new FluidBlockTransformRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new CompostRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new CrucibleRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
-        registry.addRecipeCategories(new BurnOutRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new BlockDropRecipeCategory(registry.getJeiHelpers().getGuiHelper(), "Burn Out"));
 
 
         registry.addRecipeCategories(new CrucibleHeatSourceRecipeCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -155,11 +155,11 @@ public class CompatJEI implements IModPlugin {
     }
 
     private void registerBurnOut(@Nonnull IModRegistry registry) {
-        List<BurnOutRecipe> burnOutRecipes = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRecipeList();
+        List<BlockDropRecipe> blockDropRecipes = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRecipeList();
 
-        registry.addRecipes(burnOutRecipes, BurnOutRecipeCategory.UID);
-        registry.addRecipeCatalyst(new ItemStack(Items.FLINT_AND_STEEL, 1, 0), BurnOutRecipeCategory.UID);
-        LogUtil.info("JEI: Burn Out Recipes Loaded:       " + burnOutRecipes.size());
+        registry.addRecipes(blockDropRecipes, "exnihilocreatio:burn_out");
+        registry.addRecipeCatalyst(new ItemStack(Items.FLINT_AND_STEEL, 1, 0), "exnihilocreatio:burn_out");
+        LogUtil.info("JEI: Burn Out Recipes Loaded:       " + blockDropRecipes.size());
     }
 
     @Override

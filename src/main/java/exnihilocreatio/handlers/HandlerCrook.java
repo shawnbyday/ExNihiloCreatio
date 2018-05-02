@@ -3,7 +3,7 @@ package exnihilocreatio.handlers;
 import exnihilocreatio.config.ModConfig;
 import exnihilocreatio.items.tools.ICrook;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
-import exnihilocreatio.registries.types.CrookReward;
+import exnihilocreatio.registries.types.BlockDropReward;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.init.Items;
@@ -31,13 +31,13 @@ public class HandlerCrook {
         if (!isCrook(held))
             return;
 
-        List<CrookReward> rewards = ExNihiloRegistryManager.CROOK_REGISTRY.getRewards(event.getState());
+        List<BlockDropReward> rewards = ExNihiloRegistryManager.CROOK_REGISTRY.getRewards(event.getState());
         if (rewards != null && rewards.size() > 0) {
             event.getDrops().clear();
             event.setDropChance(1f);
 
             int fortune = event.getFortuneLevel();
-            for (CrookReward reward : rewards) {
+            for (BlockDropReward reward : rewards) {
                 if (event.getWorld().rand.nextFloat() <= reward.getChance() + (reward.getFortuneChance() * fortune)) {
                     event.getDrops().add(reward.getStack().copy());
                 }

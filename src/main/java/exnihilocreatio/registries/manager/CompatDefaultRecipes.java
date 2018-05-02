@@ -29,12 +29,12 @@ public class CompatDefaultRecipes {
                 .forEach(mod -> mod.registerCompost(registry));
     }
 
-    public void registerCrook(CrookRegistry registry) {
+    public void registerCrook(BlockDropRegistry registry) {
         MODS.stream().filter(mod -> Loader.isModLoaded(mod.getMODID()))
                 .forEach(mod -> mod.registerCrook(registry));
     }
 
-    public void registerBurnOut(BurnOutRegistry registry) {
+    public void registerBurnOut(BlockDropRegistry registry) {
         MODS.stream().filter(mod -> Loader.isModLoaded(mod.getMODID()))
                 .forEach(mod -> mod.registerBurnOut(registry));
     }

@@ -2,10 +2,8 @@ package exnihilocreatio.recipes.defaults;
 
 import exnihilocreatio.ModBlocks;
 import exnihilocreatio.ModFluids;
-import exnihilocreatio.blocks.BlockSieve;
-import exnihilocreatio.registries.registries.BurnOutRegistry;
+import exnihilocreatio.registries.registries.BlockDropRegistry;
 import exnihilocreatio.registries.registries.FluidOnTopRegistry;
-import exnihilocreatio.registries.registries.SieveRegistry;
 import exnihilocreatio.util.BlockInfo;
 import exnihilocreatio.util.ItemInfo;
 import lombok.Getter;
@@ -21,13 +19,7 @@ public class EnderIO implements IRecipeDefaults {
     @Getter
     public final String MODID = "enderio";
 
-    public void registerSieve(SieveRegistry registry) {
-        if (EIO_DUST_BEDROCK != null){
-            registry.register("dust", new ItemInfo(EIO_DUST_BEDROCK, 20), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
-        }
-    }
-
-    public void registerBurnOut(BurnOutRegistry registry) {
+    public void registerBurnOut(BlockDropRegistry registry) {
         registry.register(new BlockInfo(ModBlocks.pseudoBedrock), new ItemInfo(EIO_DUST_BEDROCK, 20), 0.5f);
     }
 

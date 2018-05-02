@@ -7,7 +7,7 @@ public interface IRecipeDefaults {
 
     default void registerCompost(CompostRegistry registry) { }
 
-    default void registerCrook(CrookRegistry registry) { }
+    default void registerCrook(BlockDropRegistry registry) { }
 
     default void registerSieve(SieveRegistry registry) { }
 
@@ -33,5 +33,5 @@ public interface IRecipeDefaults {
 
     default void registerMilk(MilkEntityRegistry registry) { }
 
-    default void registerBurnOut(BurnOutRegistry registry) { }
+    default void registerBurnOut(BlockDropRegistry registry) { }
 }

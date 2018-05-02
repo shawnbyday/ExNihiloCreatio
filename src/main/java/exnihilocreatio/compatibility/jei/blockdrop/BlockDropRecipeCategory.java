@@ -1,13 +1,8 @@
-package exnihilocreatio.compatibility.jei.burnout;
+package exnihilocreatio.compatibility.jei.blockdrop;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import exnihilocreatio.ExNihiloCreatio;
-import exnihilocreatio.compatibility.jei.hammer.HammerRecipe;
-import exnihilocreatio.compatibility.jei.hammer.HammerRecipeCategory;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
-import exnihilocreatio.registries.types.BurnOutReward;
-import exnihilocreatio.registries.types.HammerReward;
+import exnihilocreatio.registries.types.BlockDropReward;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableStatic;
@@ -19,7 +14,6 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,10 +21,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.Map;
 
-public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
-    public static final String UID = "exnihilocreatio:burnout";
+public class BlockDropRecipeCategory implements IRecipeCategory<BlockDropRecipe> {
+    public String UID;
     private static final ResourceLocation texture = new ResourceLocation(ExNihiloCreatio.MODID, "textures/gui/jei_burnout.png");
 
     private final IDrawableStatic background;
@@ -39,9 +32,13 @@ public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
     private int highlightX;
     private int highlightY;
 
-    public BurnOutRecipeCategory(IGuiHelper helper) {
+    private String title;
+
+    public BlockDropRecipeCategory(IGuiHelper helper, String title) {
         this.background = helper.createDrawable(texture, 0, 0, 166, 128);
         this.slotHighlight = helper.createDrawable(texture, 166, 0, 18, 18);
+        this.title = title;
+        this.UID = ExNihiloCreatio.MODID + ":" + title.toLowerCase().replace(" ", "_");
     }
 
     @Override
@@ -53,7 +50,7 @@ public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
     @Override
     @Nonnull
     public String getTitle() {
-        return "Burn Out";
+        return title;
     }
 
     @Override
@@ -76,7 +73,7 @@ public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
     }
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull BurnOutRecipe recipeWrapper, @Nonnull IIngredients ingredients) {
+    public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull BlockDropRecipe recipeWrapper, @Nonnull IIngredients ingredients) {
         recipeLayout.getItemStacks().init(0, true, 74, 9);
         recipeLayout.getItemStacks().set(0, ingredients.getInputs(ItemStack.class).get(0));
 
@@ -106,7 +103,7 @@ public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
         }
 
 
-        recipeLayout.getItemStacks().addTooltipCallback(new BurnOutRecipeCategory.BurnOutTooltipCallback(recipeWrapper));
+        recipeLayout.getItemStacks().addTooltipCallback(new BlockDropRecipeCategory.BurnOutTooltipCallback(recipeWrapper));
     }
 
     @Override
@@ -115,9 +112,9 @@ public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
     }
 
     private static class BurnOutTooltipCallback implements ITooltipCallback<ItemStack> {
-        private final BurnOutRecipe recipe;
+        private final BlockDropRecipe recipe;
 
-        private BurnOutTooltipCallback(BurnOutRecipe recipeWrapper) {
+        private BurnOutTooltipCallback(BlockDropRecipe recipeWrapper) {
             this.recipe = recipeWrapper;
         }
 
@@ -131,9 +128,9 @@ public class BurnOutRecipeCategory implements IRecipeCategory<BurnOutRecipe> {
                 @SuppressWarnings("deprecation")
                 IBlockState block = blockBase.getStateFromMeta(blockStack.getMetadata());
 
-                List<BurnOutReward> rewards = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRewards(block);
+                List<BlockDropReward> rewards = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRewards(block);
 
-                for (BurnOutReward reward : rewards) {
+                for (BlockDropReward reward : rewards) {
                     float chance = 100.0F * reward.getChance();
 
                     String format = chance >= 10 ? " - %3.0f%% (x%d)" : "%1.1f%% - (x%d)";

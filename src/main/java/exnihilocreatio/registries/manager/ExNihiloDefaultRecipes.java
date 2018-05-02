@@ -32,16 +32,16 @@ public class ExNihiloDefaultRecipes {
         }
     }
 
-    private static class CrookDefaults implements ICrookDefaultRegistryProvider {
+    private static class CrookDefaults implements IBlockDropDefaultRegistryProvider {
         @Override
-        public void registerRecipeDefaults(CrookRegistry registry) {
+        public void registerRecipeDefaults(BlockDropRegistry registry) {
             compat.registerCrook(registry);
         }
     }
 
-    private static class BurnOutDefaults implements IBurnOutDefaultRegistryProvider {
+    private static class BurnOutDefaults implements IBlockDropDefaultRegistryProvider {
         @Override
-        public void registerRecipeDefaults(BurnOutRegistry registry) {
+        public void registerRecipeDefaults(BlockDropRegistry registry) {
             compat.registerBurnOut(registry);
         }
     }

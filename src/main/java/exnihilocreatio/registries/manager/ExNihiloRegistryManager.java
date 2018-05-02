@@ -11,7 +11,6 @@ public final class ExNihiloRegistryManager {
     public static final List<ISieveDefaultRegistryProvider> SIEVE_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<IHammerDefaultRegistryProvider> HAMMER_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<ICompostDefaultRegistryProvider> COMPOST_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
-    public static final List<ICrookDefaultRegistryProvider> CROOK_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<ICrucibleStoneDefaultRegistryProvider> CRUCIBLE_STONE_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<ICrucibleWoodDefaultRegistryProvider> CRUCIBLE_WOOD_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<IFluidBlockDefaultRegistryProvider> FLUID_BLOCK_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
@@ -22,11 +21,12 @@ public final class ExNihiloRegistryManager {
     public static final List<IOreDefaultRegistryProvider> ORE_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<IMilkEntityDefaultRegistryProvider> MILK_ENTITY_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     public static final List<IBarrelLiquidBlacklistDefaultRegistryProvider> BARREL_LIQUID_BLACKLIST_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
-    public static final List<IBurnOutDefaultRegistryProvider> BURNOUT_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
+
+    public static final List<IBlockDropDefaultRegistryProvider> CROOK_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
+    public static final List<IBlockDropDefaultRegistryProvider> BURNOUT_DEFAULT_REGISTRY_PROVIDERS = new ArrayList<>();
     //endregion
 
     public static final CompostRegistry COMPOST_REGISTRY = new CompostRegistry();
-    public static final CrookRegistry CROOK_REGISTRY = new CrookRegistry();
     public static final SieveRegistry SIEVE_REGISTRY = new SieveRegistry();
     public static final HammerRegistry HAMMER_REGISTRY = new HammerRegistry();
     public static final HeatRegistry HEAT_REGISTRY = new HeatRegistry();
@@ -39,7 +39,9 @@ public final class ExNihiloRegistryManager {
     public static final CrucibleRegistry CRUCIBLE_STONE_REGISTRY = new CrucibleRegistry(CRUCIBLE_STONE_DEFAULT_REGISTRY_PROVIDERS);
     public static final CrucibleRegistry CRUCIBLE_WOOD_REGISTRY = new CrucibleRegistry(CRUCIBLE_WOOD_DEFAULT_REGISTRY_PROVIDERS);
     public static final MilkEntityRegistry MILK_ENTITY_REGISTRY = new MilkEntityRegistry();
-    public static final BurnOutRegistry BURNOUT_REGISTRY = new BurnOutRegistry();
+
+    public static final BlockDropRegistry CROOK_REGISTRY = new BlockDropRegistry(CROOK_DEFAULT_REGISTRY_PROVIDERS);
+    public static final BlockDropRegistry BURNOUT_REGISTRY = new BlockDropRegistry(BURNOUT_DEFAULT_REGISTRY_PROVIDERS);
 
 
     //region >>>> DEFAULT RECIPE REGISTERS
@@ -54,14 +56,6 @@ public final class ExNihiloRegistryManager {
 
     public static void registerCompostDefaultRecipeHandler(ICompostDefaultRegistryProvider provider) {
         COMPOST_DEFAULT_REGISTRY_PROVIDERS.add(provider);
-    }
-
-    public static void registerCrookDefaultRecipeHandler(ICrookDefaultRegistryProvider provider) {
-        CROOK_DEFAULT_REGISTRY_PROVIDERS.add(provider);
-    }
-
-    public static void registerBurnOutDefaultRecipeHandler(IBurnOutDefaultRegistryProvider provider) {
-        BURNOUT_DEFAULT_REGISTRY_PROVIDERS.add(provider);
     }
 
     public static void registerCrucibleStoneDefaultRecipeHandler(ICrucibleStoneDefaultRegistryProvider provider) {
@@ -102,6 +96,14 @@ public final class ExNihiloRegistryManager {
 
     public static void registerMilkEntityDefaultRecipeHandler(IMilkEntityDefaultRegistryProvider provider) {
         MILK_ENTITY_DEFAULT_REGISTRY_PROVIDERS.add(provider);
+    }
+
+    public static void registerCrookDefaultRecipeHandler(IBlockDropDefaultRegistryProvider provider) {
+        CROOK_DEFAULT_REGISTRY_PROVIDERS.add(provider);
+    }
+
+    public static void registerBurnOutDefaultRecipeHandler(IBlockDropDefaultRegistryProvider provider) {
+        BURNOUT_DEFAULT_REGISTRY_PROVIDERS.add(provider);
     }
     //endregion
 }

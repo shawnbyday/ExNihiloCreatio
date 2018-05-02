@@ -1,9 +1,8 @@
-package exnihilocreatio.compatibility.jei.burnout;
+package exnihilocreatio.compatibility.jei.blockdrop;
 
 import com.google.common.collect.Lists;
 import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
-import exnihilocreatio.registries.types.BurnOutReward;
-import exnihilocreatio.registries.types.HammerReward;
+import exnihilocreatio.registries.types.BlockDropReward;
 import exnihilocreatio.util.LogUtil;
 import lombok.Getter;
 import mezz.jei.api.ingredients.IIngredients;
@@ -18,22 +17,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BurnOutRecipe implements IRecipeWrapper {
+public class BlockDropRecipe implements IRecipeWrapper {
     @Getter
     private List<ItemStack> inputs;
     @Getter
     private List<ItemStack> outputs;
 
-    public BurnOutRecipe(Ingredient ingredient) {
-        List<BurnOutReward> rewards = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRewards(ingredient);
+    public BlockDropRecipe(Ingredient ingredient) {
+        List<BlockDropReward> rewards = ExNihiloRegistryManager.BURNOUT_REGISTRY.getRewards(ingredient);
         if (rewards.isEmpty())
             return;
 
-        List<ItemStack> allOutputs = rewards.stream().map(BurnOutReward::getStack).collect(Collectors.toList());
+        LogUtil.log(Level.DEBUG, ingredient);
         inputs = Arrays.asList(ingredient.getMatchingStacks());
-        if(inputs.size() == 0){
+        if(ingredient.matchingStacks != null && inputs.size() == 0){
             inputs = Arrays.asList(ingredient.matchingStacks);
         }
+
+        List<ItemStack> allOutputs = rewards.stream().map(BlockDropReward::getStack).collect(Collectors.toList());
         outputs = Lists.newArrayList();
 
         for (ItemStack stack : allOutputs) {

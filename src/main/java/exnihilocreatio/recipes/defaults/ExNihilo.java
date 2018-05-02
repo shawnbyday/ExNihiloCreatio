@@ -90,11 +90,11 @@ public class ExNihilo implements IRecipeDefaults {
         registry.register("listAllmeatraw", 0.15f, dirtState, new Color("FFA091"));
     }
 
-    public void registerCrook(CrookRegistry registry) {
+    public void registerCrook(BlockDropRegistry registry) {
         registry.register("treeLeaves", ItemResource.getResourceStack(ItemResource.SILKWORM), 0.1f, 0f);
     }
 
-    public void registerBurnOut(BurnOutRegistry registry) {
+    public void registerBurnOut(BlockDropRegistry registry) {
 
     }
 
