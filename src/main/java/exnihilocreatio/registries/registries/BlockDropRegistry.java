@@ -18,7 +18,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.crafting.CraftingHelper;
 
 import javax.annotation.Nonnull;
 import java.io.FileReader;
@@ -43,12 +42,6 @@ public class BlockDropRegistry extends BaseRegistryMap<Ingredient, NonNullList<B
                 defaultRecipeProviders
         );
     }
-
-    public List<BlockDropReward> getRewards(Ingredient ingredient) {
-        return registry.get(ingredient);
-    }
-
-
 
     public void register(String block, ItemStack drop, float chance, float fortuneChance) {
         register(new OreIngredientStoring(block), new BlockDropReward(drop, chance, fortuneChance, 0));
@@ -91,15 +84,8 @@ public class BlockDropRegistry extends BaseRegistryMap<Ingredient, NonNullList<B
     }
 
     public void register(BlockInfo info, ItemStack drop, float chance, float fortuneChance, int miningLevel) {
-        Ingredient ingredient = registry.keySet().stream().filter(entry -> entry.test(info.getItemStack())).findFirst().orElse(null);
-
-        if(ingredient != null)
-            registry.get(ingredient).add(new BlockDropReward(drop, chance, fortuneChance, miningLevel));
-        else{
-            NonNullList<BlockDropReward> list = NonNullList.create();
-            list.add(new BlockDropReward(drop, chance, fortuneChance));
-            registry.put(CraftingHelper.getIngredient(info), list);
-        }
+        Ingredient ingredient = Ingredient.fromStacks(info.getItemStack());
+        register(ingredient, new BlockDropReward(drop, chance, fortuneChance, miningLevel));
     }
 
     public void register(Ingredient ingredient, ItemStack drop, float chance, float fortuneChance, int miningLevel) {
@@ -136,6 +122,12 @@ public class BlockDropRegistry extends BaseRegistryMap<Ingredient, NonNullList<B
                 .forEach(ingredient -> list.addAll(ingredient.getValue()));
 
         return list;
+    }
+
+    public NonNullList<BlockDropReward> getRewards(Ingredient ingredient) {
+        NonNullList<BlockDropReward> drops = NonNullList.create();
+        registry.entrySet().stream().filter(entry -> entry.getKey() == ingredient).forEach(entry -> drops.addAll(entry.getValue()));
+        return drops;
     }
 
     @Override
