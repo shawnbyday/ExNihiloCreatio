@@ -30,7 +30,6 @@ public class ItemOre extends Item implements IHasModel, IHasSpecialRegistry {
     @Getter
     private boolean registerDust;
 
-    @Getter
     private Ore ore;
 
     public ItemOre(Ore ore) {
@@ -45,6 +44,10 @@ public class ItemOre extends Item implements IHasModel, IHasSpecialRegistry {
         setHasSubtypes(true);
 
         Data.ITEMS.add(this);
+    }
+
+    public Ore getOre() {
+        return ore;
     }
 
     @Override

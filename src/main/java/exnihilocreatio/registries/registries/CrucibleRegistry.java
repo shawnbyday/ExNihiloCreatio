@@ -153,7 +153,7 @@ public class CrucibleRegistry extends BaseRegistryMap<Ingredient, Meltable> impl
                 if(match.isEmpty() || match.getItem() == null)
                     continue;
                 ItemStack input = match.copy();
-                input.setCount((int) Math.ceil(Fluid.BUCKET_VOLUME / entry.getValue().getAmount()));
+                input.setCount((int) Math.max(Math.ceil(Fluid.BUCKET_VOLUME / entry.getValue().getAmount()), 1));
                 inputs.add(input);
             }
             // Empty oredicts can result in 0 inputs.
