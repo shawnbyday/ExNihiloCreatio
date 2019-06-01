@@ -53,6 +53,16 @@ minecraft {
 
 repositories
 {
+
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+    maven {
+        name 'Darkhax'
+        url 'https://maven.mcmoddev.com/'
+    }
+
     // Required for JEI and Mantle
     maven {
     	name "DVS1 Maven FS" 
@@ -111,10 +121,18 @@ dependencies
         exclude group: "cofh", module: "RedstoneFlux"
     }
 
-    // deobfCompile ("cofh:ThermalFoundation:1.12-2.3.6.16:universal") { exclude group: "mezz.jei", module: "jei_1.12" }
     deobfCompile ("CraftTweaker2:CraftTweaker2-MC1120-Main:${mc_major}-${ct2_version}")
 
     compileOnly "org.projectlombok:lombok:1.18.0"
+
+    // Magneticraft Compat
+    compileOnly "magneticraft:Magneticraft_${mc_major}:${magneticraft_version}:dev"
+    // Fluid Cows and Clones
+    compileOnly "fluid-cows:FluidCows:${fluidcows_version}"
+    compileOnly "moo-fluids:MooFluids:${mc_version}:${moofluids_version}"
+
+    // Forestry
+    compileOnly("forestry:forestry_${mc_version}:${forestry_version}")
 
     compile group: "net.shadowfacts", name: "Forgelin", version: "${forgelin_version}"
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
