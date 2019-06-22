@@ -15,7 +15,15 @@ enum class EnumModdedMetals(val color: Color) {
     TIN(Color("E6FFF2")),
     TUNGSTEN(Color("1C1C1C")),
     URANIUM(Color("4E5B43")),
-    ZINC(Color("A59C74"));
+    ZINC(Color("A59C74")),
+    TITANIUM(Color("BD87CA")),
+    THORIUM(Color("333333")),
+    BORON(Color("939393")),
+    LITHIUM(Color("EDEDED")),
+    BERYLLIUM(Color("E5ECDD")),
+    ZIRCONIUM(Color("E6E8C7")),
+    MAGNESIUM(Color("F8DEF8"));
+
 
     fun getRegistryName(): String {
         return name.toLowerCase()

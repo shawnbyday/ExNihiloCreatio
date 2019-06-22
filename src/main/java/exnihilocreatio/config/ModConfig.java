@@ -115,7 +115,7 @@ public class ModConfig {
         public boolean oredictExNihiloSeeds = true;
 
         @Config.Comment({"When attempting to reuse an existing item from the oredict, what modids should be given preference."})
-        public String[] oreDictPreferenceOrder = {"thermalfoundation", "magneticraft", "immersiveengineering"};
+        public String[] oreDictPreferenceOrder = {"thermalfoundation", "magneticraft", "immersiveengineering", "nuclearcraft", "techreborn"};
     }
 
     public static class Sieve {

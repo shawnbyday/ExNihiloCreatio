@@ -19,7 +19,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.common.crafting.CraftingHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileReader;
@@ -52,22 +51,11 @@ public class CrookRegistry extends BaseRegistryMap<Ingredient, List<CrookReward>
     }
 
     public void register(@NotNull BlockInfo info, @NotNull ItemStack reward, float chance, float fortuneChance) {
-        Ingredient ingredient = registry.keySet().stream().filter(entry -> entry.test(info.getItemStack())).findFirst().orElse(null);
-
-        if (ingredient != null) {
-            registry.get(ingredient).add(new CrookReward(reward, chance, fortuneChance));
-        } else {
-            NonNullList<CrookReward> list = NonNullList.create();
-            list.add(new CrookReward(reward, chance, fortuneChance));
-            registry.put(CraftingHelper.getIngredient(info), list);
-        }
+        register(Ingredient.fromStacks(info.getItemStack()), new CrookReward(reward, chance, fortuneChance));
     }
 
     public void register(@NotNull String name, @NotNull ItemStack reward, float chance, float fortuneChance) {
-        Ingredient ingredient = new OreIngredientStoring(name);
-        CrookReward crookReward = new CrookReward(reward, chance, fortuneChance);
-
-        register(ingredient, crookReward);
+        register(new OreIngredientStoring(name), new CrookReward(reward, chance, fortuneChance));
     }
 
     public void register(@NotNull Ingredient ingredient, @NotNull CrookReward reward) {

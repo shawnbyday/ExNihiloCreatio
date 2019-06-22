@@ -46,13 +46,13 @@ public class TileAutoSifter extends BaseTileEntity implements ITickable, IRotati
     public void update() {
         tickCounter++;
 
-        int rotatationSpeed = 10;
+        int rotationSpeed = 10;
         if (world.isRemote && perTickRotation != 0) {
-            offsetX = ModConfig.client.clientAutoSieveDisplacement * (float) Math.cos(tickCounter * 2f * Math.PI / rotatationSpeed);
-            offsetZ = ModConfig.client.clientAutoSieveDisplacement * (float) Math.sin(tickCounter * 2f * Math.PI / rotatationSpeed);
+            offsetX = ModConfig.client.clientAutoSieveDisplacement * (float) Math.cos(tickCounter * 2f * Math.PI / rotationSpeed);
+            offsetZ = ModConfig.client.clientAutoSieveDisplacement * (float) Math.sin(tickCounter * 2f * Math.PI / rotationSpeed);
         }
 
-        if (tickCounter > 0 && tickCounter % rotatationSpeed == 0) {
+        if (tickCounter > 0 && tickCounter % rotationSpeed == 0) {
             perTickRotation = calcEffectivePerTickRotation(world, pos, facing);
 
             updateToSift();
@@ -73,7 +73,7 @@ public class TileAutoSifter extends BaseTileEntity implements ITickable, IRotati
         if (world.isRemote) {
             rotationValue += perTickRotation;
 
-            if (tickCounter % rotatationSpeed == 0) {
+            if (tickCounter % rotationSpeed == 0) {
                 calculateConnectionPieces();
             }
         }

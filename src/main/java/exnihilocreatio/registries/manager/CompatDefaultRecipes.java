@@ -14,7 +14,7 @@ public class CompatDefaultRecipes {
 
     static {
         // TODO use config options to dynamically add mod support
-        MODS.add(new ExNihilo()); // Not exactly a "cross" mod support ¯\_(ツ)_/¯
+        MODS.add(ExNihilo.INSTANCE); // Not exactly a "cross" mod support ¯\_(ツ)_/¯
         MODS.add(new TinkersConstruct());
         MODS.add(new IntegratedDynamics());
         MODS.add(new Mekanism());
