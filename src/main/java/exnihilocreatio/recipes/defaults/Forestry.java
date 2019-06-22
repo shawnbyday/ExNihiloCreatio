@@ -55,6 +55,24 @@ public class Forestry implements IRecipeDefaults {
         registry.register("treeLeaves", ForestryHelper.getDroneInfo("forestry.speciesTropical").getItemStack(), 0.02f, 0.2f);
         registry.register("treeLeaves", ForestryHelper.getIgnobleInfo("forestry.speciesTropical").getItemStack(), 0.01f, 0.02f);
         registry.register("treeLeaves", ForestryHelper.getPristineInfo("forestry.speciesTropical").getItemStack(), 0.001f, 0.01f);
+
+        // Sand for Modest Bees
+        registry.register("sand", ForestryHelper.getDroneInfo("forestry.speciesModest").getItemStack(), 0.05f, 0.5f);
+        registry.register("sand", ForestryHelper.getIgnobleInfo("forestry.speciesModest").getItemStack(), 0.05f, 0.01f);
+        registry.register("sand", ForestryHelper.getPristineInfo("forestry.speciesModest").getItemStack(), 0.01f, 0.05f);
+        // Snow for Wintry Bees
+        registry.register(Blocks.SNOW, -1, ForestryHelper.getDroneInfo("forestry.speciesWintry").getItemStack(), 0.05f, 0.5f);
+        registry.register(Blocks.SNOW, -1, ForestryHelper.getIgnobleInfo("forestry.speciesWintry").getItemStack(), 0.05f, 0.01f);
+        registry.register(Blocks.SNOW, -1, ForestryHelper.getPristineInfo("forestry.speciesWintry").getItemStack(), 0.01f, 0.05f);
+        // Crushed End Stone for Ender Bees
+        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getDroneInfo("forestry.speciesEnded").getItemStack(), 0.05f, 0.5f);
+        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getIgnobleInfo("forestry.speciesEnded").getItemStack(), 0.05f, 0.01f);
+        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getPristineInfo("forestry.speciesEnded").getItemStack(), 0.01f, 0.05f);
+        // Dirt for Meadows
+        registry.register("dirt", ForestryHelper.getDroneInfo("forestry.speciesMeadows").getItemStack(), 0.05f, 0.5f);
+        registry.register("dirt", ForestryHelper.getIgnobleInfo("forestry.speciesMeadows").getItemStack(), 0.05f, 0.01f);
+        registry.register("dirt", ForestryHelper.getPristineInfo("forestry.speciesMeadows").getItemStack(), 0.01f, 0.05f);
+
     }
 
     @Override
@@ -77,28 +95,10 @@ public class Forestry implements IRecipeDefaults {
         registry.register(new ItemInfo("minecraft:leaves:3"), ForestryHelper.getDroneInfo("forestry.speciesTropical"), 0.05f, BlockSieve.MeshType.FLINT.getID());
         registry.register(new ItemInfo("minecraft:leaves:3"), ForestryHelper.getIgnobleInfo("forestry.speciesTropical"), 0.05f, BlockSieve.MeshType.IRON.getID());
         registry.register(new ItemInfo("minecraft:leaves:3"), ForestryHelper.getPristineInfo("forestry.speciesTropical"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
-        // Sand for Modest Bees
-        registry.register("sand", ForestryHelper.getDroneInfo("forestry.speciesModest"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register("sand", ForestryHelper.getIgnobleInfo("forestry.speciesModest"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register("sand", ForestryHelper.getPristineInfo("forestry.speciesModest"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
-        // Snow for Wintry Bees
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getDroneInfo("forestry.speciesWintry"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getIgnobleInfo("forestry.speciesWintry"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getPristineInfo("forestry.speciesWintry"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
         // Humus for Marshy Bees
         registry.register(new BlockInfo("forestry:humus"), ForestryHelper.getDroneInfo("forestry.speciesMarshy"), 0.05f, BlockSieve.MeshType.FLINT.getID());
         registry.register(new BlockInfo("forestry:humus"), ForestryHelper.getIgnobleInfo("forestry.speciesMarshy"), 0.05f, BlockSieve.MeshType.IRON.getID());
         registry.register(new BlockInfo("forestry:humus"), ForestryHelper.getPristineInfo("forestry.speciesMarshy"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
-        // Crushed End Stone for Ender Bees
-        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getDroneInfo("forestry.speciesEnded"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getIgnobleInfo("forestry.speciesEnded"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getPristineInfo("forestry.speciesEnded"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
-        // Dirt for Meadows
-        registry.register("dirt", ForestryHelper.getDroneInfo("forestry.speciesMeadows"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register("dirt", ForestryHelper.getIgnobleInfo("forestry.speciesMeadows"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register("dirt", ForestryHelper.getPristineInfo("forestry.speciesMeadows"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
-
-
     }
 
     @Override

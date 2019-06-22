@@ -1,22 +1,19 @@
 package exnihilocreatio.recipes.defaults;
 
-import exnihilocreatio.blocks.BlockSieve;
 import exnihilocreatio.modules.forestry.ForestryHelper;
-import exnihilocreatio.registries.registries.SieveRegistry;
+import exnihilocreatio.registries.registries.CrookRegistry;
 import lombok.Getter;
 
 public class MoreBees implements IRecipeDefaults {
     @Getter
     private final String MODID = "morebees";
+
     @Override
-    public void registerSieve(SieveRegistry registry) {
-        /*
-         BEEEEEEEEEES
-         */
-        // Gravel for Rocky Bees
-        registry.register("gravel", ForestryHelper.getDroneInfo("morebees.species.rock"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register("gravel", ForestryHelper.getIgnobleInfo("morebees.species.rock"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register("gravel", ForestryHelper.getPristineInfo("morebees.species.rock"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+    public void registerCrook(CrookRegistry registry) {
+        // All Leaves for Forest Bees
+        registry.register("cobblestone", ForestryHelper.getDroneInfo("morebees.species.rock").getItemStack(), 0.1f, 0.2f);
+        registry.register("cobblestone", ForestryHelper.getIgnobleInfo("morebees.species.rock").getItemStack(), 0.05f, 0.02f);
+        registry.register("cobblestone", ForestryHelper.getPristineInfo("morebees.species.rock").getItemStack(), 0.01f, 0.01f);
     }
 
 }
