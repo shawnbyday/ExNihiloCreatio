@@ -1,5 +1,6 @@
 package exnihilocreatio.recipes.defaults;
 
+import exnihilocreatio.ModBlocks;
 import exnihilocreatio.blocks.BlockSieve;
 import exnihilocreatio.modules.forestry.ForestryHelper;
 import exnihilocreatio.registries.registries.*;
@@ -58,19 +59,19 @@ public class Forestry implements IRecipeDefaults {
 
         // Sand for Modest Bees
         registry.register("sand", ForestryHelper.getDroneInfo("forestry.speciesModest").getItemStack(), 0.05f, 0.5f);
-        registry.register("sand", ForestryHelper.getIgnobleInfo("forestry.speciesModest").getItemStack(), 0.05f, 0.01f);
+        registry.register("sand", ForestryHelper.getIgnobleInfo("forestry.speciesModest").getItemStack(), 0.02f, 0.01f);
         registry.register("sand", ForestryHelper.getPristineInfo("forestry.speciesModest").getItemStack(), 0.01f, 0.05f);
         // Snow for Wintry Bees
         registry.register(Blocks.SNOW, -1, ForestryHelper.getDroneInfo("forestry.speciesWintry").getItemStack(), 0.05f, 0.5f);
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getIgnobleInfo("forestry.speciesWintry").getItemStack(), 0.05f, 0.01f);
+        registry.register(Blocks.SNOW, -1, ForestryHelper.getIgnobleInfo("forestry.speciesWintry").getItemStack(), 0.02f, 0.01f);
         registry.register(Blocks.SNOW, -1, ForestryHelper.getPristineInfo("forestry.speciesWintry").getItemStack(), 0.01f, 0.05f);
         // Crushed End Stone for Ender Bees
-        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getDroneInfo("forestry.speciesEnded").getItemStack(), 0.05f, 0.5f);
-        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getIgnobleInfo("forestry.speciesEnded").getItemStack(), 0.05f, 0.01f);
-        registry.register(new BlockInfo("exnihilocreatio:block_endstone_crushed"), ForestryHelper.getPristineInfo("forestry.speciesEnded").getItemStack(), 0.01f, 0.05f);
+        registry.register(ModBlocks.endstoneCrushed, -1, ForestryHelper.getDroneInfo("forestry.speciesEnded").getItemStack(), 0.05f, 0.5f);
+        registry.register(ModBlocks.endstoneCrushed, -1, ForestryHelper.getIgnobleInfo("forestry.speciesEnded").getItemStack(), 0.02f, 0.01f);
+        registry.register(ModBlocks.endstoneCrushed, -1, ForestryHelper.getPristineInfo("forestry.speciesEnded").getItemStack(), 0.01f, 0.05f);
         // Dirt for Meadows
         registry.register("dirt", ForestryHelper.getDroneInfo("forestry.speciesMeadows").getItemStack(), 0.05f, 0.5f);
-        registry.register("dirt", ForestryHelper.getIgnobleInfo("forestry.speciesMeadows").getItemStack(), 0.05f, 0.01f);
+        registry.register("dirt", ForestryHelper.getIgnobleInfo("forestry.speciesMeadows").getItemStack(), 0.02f, 0.01f);
         registry.register("dirt", ForestryHelper.getPristineInfo("forestry.speciesMeadows").getItemStack(), 0.01f, 0.05f);
 
     }
