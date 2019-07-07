@@ -8,6 +8,7 @@ import exnihilocreatio.texturing.Color;
 import exnihilocreatio.util.BlockInfo;
 import exnihilocreatio.util.ItemInfo;
 import lombok.Getter;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -49,31 +50,32 @@ public class Forestry implements IRecipeDefaults {
     @Override
     public void registerCrook(CrookRegistry registry) {
         // All Leaves for Forest Bees
-        registry.register("treeLeaves", ForestryHelper.getDroneInfo("forestry.speciesForest").getItemStack(), 0.02f, 0.2f);
-        registry.register("treeLeaves", ForestryHelper.getIgnobleInfo("forestry.speciesForest").getItemStack(), 0.01f, 0.02f);
-        registry.register("treeLeaves", ForestryHelper.getPristineInfo("forestry.speciesForest").getItemStack(), 0.001f, 0.01f);
+        registerCrookBees(registry, "treeLeaves", "magicbees.speciesForest", .02f, .01f, .001f);
         // Jungle Leaves for Tropical
-        registry.register("treeLeaves", ForestryHelper.getDroneInfo("forestry.speciesTropical").getItemStack(), 0.02f, 0.2f);
-        registry.register("treeLeaves", ForestryHelper.getIgnobleInfo("forestry.speciesTropical").getItemStack(), 0.01f, 0.02f);
-        registry.register("treeLeaves", ForestryHelper.getPristineInfo("forestry.speciesTropical").getItemStack(), 0.001f, 0.01f);
-
+        registerCrookBees(registry, Blocks.LEAVES, 3, "magicbees.speciesTropical", .02f, .01f, .001f);
+        registerCrookBees(registry, Blocks.LEAVES, 11, "magicbees.speciesTropical", .02f, .01f, .001f);
+        registerCrookBees(registry, Blocks.LEAVES, 15, "magicbees.speciesTropical", .02f, .01f, .001f);
         // Sand for Modest Bees
-        registry.register("sand", ForestryHelper.getDroneInfo("forestry.speciesModest").getItemStack(), 0.05f, 0.5f);
-        registry.register("sand", ForestryHelper.getIgnobleInfo("forestry.speciesModest").getItemStack(), 0.02f, 0.01f);
-        registry.register("sand", ForestryHelper.getPristineInfo("forestry.speciesModest").getItemStack(), 0.01f, 0.05f);
+        registerCrookBees(registry, "sand", "magicbees.speciesModest", .05f, .02f, .01f);
         // Snow for Wintry Bees
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getDroneInfo("forestry.speciesWintry").getItemStack(), 0.05f, 0.5f);
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getIgnobleInfo("forestry.speciesWintry").getItemStack(), 0.02f, 0.01f);
-        registry.register(Blocks.SNOW, -1, ForestryHelper.getPristineInfo("forestry.speciesWintry").getItemStack(), 0.01f, 0.05f);
+        registerCrookBees(registry, Blocks.SNOW, -1, "magicbees.speciesWintry", .05f, .02f, .01f);
         // Crushed End Stone for Ender Bees
-        registry.register(ModBlocks.endstoneCrushed, -1, ForestryHelper.getDroneInfo("forestry.speciesEnded").getItemStack(), 0.05f, 0.5f);
-        registry.register(ModBlocks.endstoneCrushed, -1, ForestryHelper.getIgnobleInfo("forestry.speciesEnded").getItemStack(), 0.02f, 0.01f);
-        registry.register(ModBlocks.endstoneCrushed, -1, ForestryHelper.getPristineInfo("forestry.speciesEnded").getItemStack(), 0.01f, 0.05f);
+        registerCrookBees(registry, ModBlocks.endstoneCrushed, -1, "magicbees.speciesEnded", .05f, .02f, .01f);
         // Dirt for Meadows
-        registry.register("dirt", ForestryHelper.getDroneInfo("forestry.speciesMeadows").getItemStack(), 0.05f, 0.5f);
-        registry.register("dirt", ForestryHelper.getIgnobleInfo("forestry.speciesMeadows").getItemStack(), 0.02f, 0.01f);
-        registry.register("dirt", ForestryHelper.getPristineInfo("forestry.speciesMeadows").getItemStack(), 0.01f, 0.05f);
+        registerCrookBees(registry, "dirt", "magicbees.speciesMeadows", .05f, .02f, .01f);
 
+    }
+
+    private void registerCrookBees(CrookRegistry registry, String oredict, String species, float drone, float ignoble, float pristine) {
+        registry.register(oredict, ForestryHelper.getDroneInfo(species).getItemStack(), drone, drone*2);
+        registry.register(oredict, ForestryHelper.getIgnobleInfo(species).getItemStack(), ignoble, ignoble/2);
+        registry.register(oredict, ForestryHelper.getPristineInfo(species).getItemStack(), pristine, pristine*2);
+    }
+
+    private void registerCrookBees(CrookRegistry registry, Block target, int meta, String species, float drone, float ignoble, float pristine) {
+        registry.register(target, meta, ForestryHelper.getDroneInfo(species).getItemStack(), drone, drone*2);
+        registry.register(target, meta, ForestryHelper.getIgnobleInfo(species).getItemStack(), ignoble, ignoble/2);
+        registry.register(target, meta, ForestryHelper.getPristineInfo(species).getItemStack(), pristine, pristine*2);
     }
 
     @Override

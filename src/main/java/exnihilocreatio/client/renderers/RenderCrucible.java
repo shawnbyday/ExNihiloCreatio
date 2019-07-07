@@ -2,6 +2,7 @@ package exnihilocreatio.client.renderers;
 
 import exnihilocreatio.blocks.BlockCrucibleBase;
 import exnihilocreatio.client.models.ModelVertex;
+import exnihilocreatio.config.ModConfig;
 import exnihilocreatio.texturing.Color;
 import exnihilocreatio.texturing.SpriteColor;
 import exnihilocreatio.tiles.TileCrucibleBase;
@@ -16,13 +17,18 @@ import net.minecraftforge.client.model.animation.FastTESR;
 import javax.annotation.Nullable;
 
 public class RenderCrucible extends FastTESR<TileCrucibleBase> {
-    private static final ModelVertex[] model = new ModelVertex[4];
+    private static final ModelVertex[] model_thick = new ModelVertex[4];
+    private static final ModelVertex[] model_thin = new ModelVertex[4];
 
     static {
-        model[0] = new ModelVertex(EnumFacing.UP, 0.125, 0.6875, 0.125, 0, 0);
-        model[1] = new ModelVertex(EnumFacing.UP, 0.875, 0.6875, 0.125, 1, 0);
-        model[2] = new ModelVertex(EnumFacing.UP, 0.875, 0.6875, 0.875, 1, 1);
-        model[3] = new ModelVertex(EnumFacing.UP, 0.125, 0.6875, 0.875, 0, 1);
+        model_thick[0] = new ModelVertex(EnumFacing.UP, 0.125, 0.6875, 0.125, 0, 0);
+        model_thick[1] = new ModelVertex(EnumFacing.UP, 0.875, 0.6875, 0.125, 1, 0);
+        model_thick[2] = new ModelVertex(EnumFacing.UP, 0.875, 0.6875, 0.875, 1, 1);
+        model_thick[3] = new ModelVertex(EnumFacing.UP, 0.125, 0.6875, 0.875, 0, 1);
+        model_thin[0] = new ModelVertex(EnumFacing.UP, 0.0625, 0.6875, 0.0625, 0, 0);
+        model_thin[1] = new ModelVertex(EnumFacing.UP, 0.9375, 0.6875, 0.0625, 1, 0);
+        model_thin[2] = new ModelVertex(EnumFacing.UP, 0.9375, 0.6875, 0.9375, 1, 1);
+        model_thin[3] = new ModelVertex(EnumFacing.UP, 0.0625, 0.6875, 0.9375, 0, 1);
     }
 
     @Override
@@ -59,6 +65,7 @@ public class RenderCrucible extends FastTESR<TileCrucibleBase> {
             return;
 
         // Draw
+        final ModelVertex[] model = ModConfig.client.thinCrucibleModel ? model_thin : model_thick;
         for (final ModelVertex vert : model) {
             for (final VertexFormatElement e : buffer.getVertexFormat().getElements()) {
                 switch (e.getUsage()) {

@@ -1,14 +1,14 @@
 package exnihilocreatio.recipes.defaults;
 
 import exnihilocreatio.ModBlocks;
-import exnihilocreatio.blocks.BlockSieve;
 import exnihilocreatio.modules.forestry.ForestryHelper;
 import exnihilocreatio.registries.registries.CompostRegistry;
-import exnihilocreatio.registries.registries.SieveRegistry;
+import exnihilocreatio.registries.registries.CrookRegistry;
 import exnihilocreatio.texturing.Color;
 import exnihilocreatio.util.BlockInfo;
 import exnihilocreatio.util.ItemInfo;
 import lombok.Getter;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
 public class MagicBees implements IRecipeDefaults {
@@ -25,35 +25,34 @@ public class MagicBees implements IRecipeDefaults {
         registry.register(new ItemInfo("magicbees:propolis:5"), 0.125f, new BlockInfo(Blocks.SLIME_BLOCK), new Color("7B934B"));
         registry.register(new ItemInfo("magicbees:propolis:6"), 0.125f, new BlockInfo(Blocks.SLIME_BLOCK), new Color("7B934B"));
     }
+
+
     @Override
-    public void registerSieve(SieveRegistry registry) {
-        /*
-         BEEEEEEEEEES
-         */
+    public void registerCrook(CrookRegistry registry) {
         // Crushed Netherrack for Infernal Bees
-        registry.register(new BlockInfo(ModBlocks.netherrackCrushed), ForestryHelper.getDroneInfo("magicbees.speciesInfernal"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register(new BlockInfo(ModBlocks.netherrackCrushed), ForestryHelper.getIgnobleInfo("magicbees.speciesInfernal"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register(new BlockInfo(ModBlocks.netherrackCrushed), ForestryHelper.getPristineInfo("magicbees.speciesInfernal"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+        registerCrookBees(registry, ModBlocks.netherrackCrushed, -1, "magicbees.speciesInfernal", .05f, .02f, .01f);
         // Crushed Endstone for Oblivion Bees
-        registry.register(new BlockInfo(ModBlocks.endstoneCrushed), ForestryHelper.getDroneInfo("magicbees.speciesOblivion"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register(new BlockInfo(ModBlocks.endstoneCrushed), ForestryHelper.getIgnobleInfo("magicbees.speciesOblivion"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register(new BlockInfo(ModBlocks.endstoneCrushed), ForestryHelper.getPristineInfo("magicbees.speciesOblivion"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+        registerCrookBees(registry, ModBlocks.endstoneCrushed, -1, "magicbees.speciesOblivion", .05f, .02f, .01f);
         // Dirt for Unusual Bees
-        registry.register("dirt", ForestryHelper.getDroneInfo("magicbees.speciesUnusual"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register("dirt", ForestryHelper.getIgnobleInfo("magicbees.speciesUnusual"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register("dirt", ForestryHelper.getPristineInfo("magicbees.speciesUnusual"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+        registerCrookBees(registry, "dirt", "magicbees.speciesUnusual", .05f, .02f, .01f);
         // Grass for Mystical Bees
-        registry.register("grass", ForestryHelper.getDroneInfo("magicbees.speciesMystical"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register("grass", ForestryHelper.getIgnobleInfo("magicbees.speciesMystical"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register("grass", ForestryHelper.getPristineInfo("magicbees.speciesMystical"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+        registerCrookBees(registry, "grass", "magicbees.speciesMystical", .05f, .02f, .01f);
         // Sand for Sorcerous Bees
-        registry.register("sand", ForestryHelper.getDroneInfo("magicbees.speciesSorcerous"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register("sand", ForestryHelper.getIgnobleInfo("magicbees.speciesSorcerous"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register("sand", ForestryHelper.getPristineInfo("magicbees.speciesSorcerous"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+        registerCrookBees(registry, "sand", "magicbees.speciesSorcerous", .05f, .02f, .01f);
         // Crushed Andesite for Attuned Bees
-        registry.register(new BlockInfo(ModBlocks.crushedAndesite), ForestryHelper.getDroneInfo("magicbees.speciesAttuned"), 0.05f, BlockSieve.MeshType.FLINT.getID());
-        registry.register(new BlockInfo(ModBlocks.crushedAndesite), ForestryHelper.getIgnobleInfo("magicbees.speciesAttuned"), 0.05f, BlockSieve.MeshType.IRON.getID());
-        registry.register(new BlockInfo(ModBlocks.crushedAndesite), ForestryHelper.getPristineInfo("magicbees.speciesAttuned"), 0.01f, BlockSieve.MeshType.DIAMOND.getID());
+        registerCrookBees(registry, ModBlocks.crushedAndesite, -1, "magicbees.speciesAttuned", .05f, .02f, .01f);
+    }
+
+    private void registerCrookBees(CrookRegistry registry, String oredict, String species, float drone, float ignoble, float pristine) {
+        registry.register(oredict, ForestryHelper.getDroneInfo(species).getItemStack(), drone, drone*2);
+        registry.register(oredict, ForestryHelper.getIgnobleInfo(species).getItemStack(), ignoble, ignoble/2);
+        registry.register(oredict, ForestryHelper.getPristineInfo(species).getItemStack(), pristine, pristine*2);
+    }
+
+    private void registerCrookBees(CrookRegistry registry, Block target, int meta, String species, float drone, float ignoble, float pristine) {
+        registry.register(target, meta, ForestryHelper.getDroneInfo(species).getItemStack(), drone, drone*2);
+        registry.register(target, meta, ForestryHelper.getIgnobleInfo(species).getItemStack(), ignoble, ignoble/2);
+        registry.register(target, meta, ForestryHelper.getPristineInfo(species).getItemStack(), pristine, pristine*2);
     }
 
 }
