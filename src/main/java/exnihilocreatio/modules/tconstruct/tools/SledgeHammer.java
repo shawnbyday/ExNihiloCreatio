@@ -17,6 +17,7 @@ import slimeknights.tconstruct.library.tools.ToolNBT;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import slimeknights.tconstruct.tools.TinkerTools;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -59,6 +60,13 @@ public class SledgeHammer extends AoeToolCore implements IHammer {
     @Override
     public boolean isEffective(IBlockState state) {
         return ExNihiloRegistryManager.HAMMER_REGISTRY.isRegistered(state);
+    }
+
+    @Override
+    public boolean canHarvestBlock(@Nonnull IBlockState state, ItemStack stack) {
+        return !ToolHelper.isBroken(stack) &&
+                ExNihiloRegistryManager.HAMMER_REGISTRY.getRewards(state).stream()
+                        .anyMatch(it -> it.getMiningLevel() <= getMiningLevel(stack));
     }
 
     @Override
