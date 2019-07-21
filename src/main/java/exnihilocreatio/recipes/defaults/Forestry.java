@@ -50,19 +50,19 @@ public class Forestry implements IRecipeDefaults {
     @Override
     public void registerCrook(CrookRegistry registry) {
         // All Leaves for Forest Bees
-        registerCrookBees(registry, "treeLeaves", "magicbees.speciesForest", .02f, .01f, .001f);
+        registerCrookBees(registry, "treeLeaves", "forestry.speciesForest", .02f, .01f, .001f);
         // Jungle Leaves for Tropical
-        registerCrookBees(registry, Blocks.LEAVES, 3, "magicbees.speciesTropical", .02f, .01f, .001f);
-        registerCrookBees(registry, Blocks.LEAVES, 11, "magicbees.speciesTropical", .02f, .01f, .001f);
-        registerCrookBees(registry, Blocks.LEAVES, 15, "magicbees.speciesTropical", .02f, .01f, .001f);
+        registerCrookBees(registry, Blocks.LEAVES, 3, "forestry.speciesTropical", .02f, .01f, .001f);
+        registerCrookBees(registry, Blocks.LEAVES, 11, "forestry.speciesTropical", .02f, .01f, .001f);
+        registerCrookBees(registry, Blocks.LEAVES, 15, "forestry.speciesTropical", .02f, .01f, .001f);
         // Sand for Modest Bees
-        registerCrookBees(registry, "sand", "magicbees.speciesModest", .05f, .02f, .01f);
+        registerCrookBees(registry, "sand", "forestry.speciesModest", .05f, .02f, .01f);
         // Snow for Wintry Bees
-        registerCrookBees(registry, Blocks.SNOW, -1, "magicbees.speciesWintry", .05f, .02f, .01f);
+        registerCrookBees(registry, Blocks.SNOW, -1, "forestry.speciesWintry", .05f, .02f, .01f);
         // Crushed End Stone for Ender Bees
-        registerCrookBees(registry, ModBlocks.endstoneCrushed, -1, "magicbees.speciesEnded", .05f, .02f, .01f);
+        registerCrookBees(registry, ModBlocks.endstoneCrushed, -1, "forestry.speciesEnded", .05f, .02f, .01f);
         // Dirt for Meadows
-        registerCrookBees(registry, "dirt", "magicbees.speciesMeadows", .05f, .02f, .01f);
+        registerCrookBees(registry, "dirt", "forestry.speciesMeadows", .05f, .02f, .01f);
 
     }
 
