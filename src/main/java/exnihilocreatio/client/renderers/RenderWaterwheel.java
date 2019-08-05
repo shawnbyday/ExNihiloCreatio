@@ -43,7 +43,8 @@ public class RenderWaterwheel extends TileEntitySpecialRenderer<TileWaterwheel> 
         GlStateManager.rotate(rotFacing, 0, 1, 0);
 
         float rot = (tile.rotationValue + tile.perTickEffective * partialTicks) % 360;
-        GlStateManager.rotate(rot, 0, 0, 1);
+        int direction = (tile.facing == EnumFacing.SOUTH || tile.facing == EnumFacing.WEST) ? -1 : 1;
+        GlStateManager.rotate(rot, 0, 0, direction);
 
 
         RenderHelper.disableStandardItemLighting();

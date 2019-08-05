@@ -93,10 +93,14 @@ public class CompatJEI implements IModPlugin {
 
         // Register Crook and Hammer catalysts
         for(Item item : Item.REGISTRY){
-            if(ItemUtil.isHammer(item))
+            if(ItemUtil.isHammer(item)) {
                 registry.addRecipeCatalyst(new ItemStack(item), HammerRecipeCategory.UID);
-            if(ItemUtil.isCrook(item))
+                LogUtil.info("Registered Hammer Catalyst: " + item.getRegistryName());
+            }
+            if(ItemUtil.isCrook(item)){
                 registry.addRecipeCatalyst(new ItemStack(item), CrookRecipeCategory.UID);
+                LogUtil.info("Registered Crook Catalyst: " + item.getRegistryName());
+            }
         }
     }
 
