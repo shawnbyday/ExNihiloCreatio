@@ -178,8 +178,8 @@ object ExNihilo: IRecipeDefaults {
             val info = ItemInfo(ore)
             when (ore.ore.name) {
                 "gold" -> {
-                    multiMeshRegister(registry, "gravel", info, null, 0.25f, 0.25f, 0.4f)
-                    multiMeshRegister(registry, crushedNetherrack, info, null, 0.05f, 0.075f, 0.15f)
+                    multiMeshRegister(registry, crushedNetherrack, info, null, 0.25f, 0.25f, 0.4f)
+                    multiMeshRegister(registry, "gravel", info, null, 0.05f, 0.075f, 0.15f)
                 }
                 "iron" -> {
                     multiMeshRegister(registry, "gravel", info, null, 0.1f, 0.15f, 0.25f)
