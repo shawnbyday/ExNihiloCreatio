@@ -89,7 +89,11 @@ public class BlockInfestingLeaves extends BlockLeaves implements ITileEntityProv
         } else {
             leafState = state;
         }
-        world.setBlockState(pos, ModBlocks.infestingLeaves.getDefaultState().withProperty(DECAYABLE, true), 3);
+        world.setBlockState(pos,
+                ModBlocks.infestingLeaves.getDefaultState()
+                        .withProperty(CHECK_DECAY, leafState.getValue(CHECK_DECAY))
+                        .withProperty(DECAYABLE, leafState.getValue(DECAYABLE)),
+                3);
         if (world.getTileEntity(pos) != null)
             ((ITileLeafBlock) world.getTileEntity(pos)).setLeafBlock(leafState);
     }
@@ -104,10 +108,10 @@ public class BlockInfestingLeaves extends BlockLeaves implements ITileEntityProv
     public static void setInfested(World world, BlockPos pos, IBlockState leafState) {
         IBlockState block = world.getBlockState(pos);
         if (block.getBlock() instanceof BlockInfestingLeaves) {
-            IBlockState retval = ((IExtendedBlockState) ModBlocks.infestedLeaves.getDefaultState())
-                    .withProperty(BlockInfestedLeaves.LEAFBLOCK, leafState)
-                    .withProperty(CHECK_DECAY, true)
-                    .withProperty(DECAYABLE, false);
+            IBlockState retval = ModBlocks.infestedLeaves.getDefaultState()
+                    .withProperty(CHECK_DECAY, block.getValue(CHECK_DECAY))
+                    .withProperty(DECAYABLE, block.getValue(DECAYABLE));
+            retval = ((IExtendedBlockState) retval).withProperty(BlockInfestedLeaves.LEAFBLOCK, leafState);
 
             world.setBlockState(pos, retval, 0b111);
 

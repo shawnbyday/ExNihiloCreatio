@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.StringUtils;
-import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.AoeToolCore;
@@ -74,7 +74,17 @@ public class TiCrook extends AoeToolCore implements ICrook {
 
     @Override
     protected ToolNBT buildTagData(List<Material> materials) {
-        return buildDefaultTag(materials);
+        HandleMaterialStats handle = materials.get(0).getStatsOrUnknown(MaterialTypes.HANDLE);
+        HeadMaterialStats head = materials.get(1).getStatsOrUnknown(MaterialTypes.HEAD);
+        ExtraMaterialStats extra = materials.get(2).getStatsOrUnknown(MaterialTypes.EXTRA);
+        HandleMaterialStats handle2 = materials.get(3).getStatsOrUnknown(MaterialTypes.HANDLE);
+
+        ToolNBT data = new ToolNBT();
+        data.head(head);
+        data.extra(extra);
+        data.handle(handle, handle2);
+
+        return data;
     }
 
     @Override
