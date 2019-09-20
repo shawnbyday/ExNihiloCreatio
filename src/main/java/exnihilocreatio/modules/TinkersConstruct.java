@@ -18,9 +18,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 public class TinkersConstruct implements IExNihiloCreatioModule {
     public static SledgeHammer SLEDGE_HAMMER;
@@ -90,6 +92,8 @@ public class TinkersConstruct implements IExNihiloCreatioModule {
 
     @Override
     public void registerItems(IForgeRegistry<Item> registry) {
-        Helper.proxy.registerItems(registry);
+        if(TConstruct.pulseManager.isPulseLoaded(TinkerTools.PulseId)) {
+            Helper.proxy.registerItems(registry);
+        }
     }
 }

@@ -33,6 +33,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.tools.TinkerTools;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -44,6 +46,7 @@ public class CompatJEI implements IModPlugin {
     @Override
     public void registerItemSubtypes(@Nonnull ISubtypeRegistry subtypeRegistry) {
         if(Loader.isModLoaded("tconstruct") &&
+                TConstruct.pulseManager.isPulseLoaded(TinkerTools.PulseId) &&
                 ModConfig.compatibility.tinkers_construct_compat.doTinkersConstructCompat &&
                 ModConfig.compatibility.tinkers_construct_compat.JEItinkersTools){
             if(ModConfig.compatibility.tinkers_construct_compat.addExNihiloHammer)
