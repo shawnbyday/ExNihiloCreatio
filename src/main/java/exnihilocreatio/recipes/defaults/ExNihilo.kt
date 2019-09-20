@@ -287,7 +287,7 @@ object ExNihilo: IRecipeDefaults {
             val wool = BlockInfo.getStateFromMeta(Blocks.WOOL, meta)
             registry.register(wool, ItemStack(Items.STRING, 3), 0, 1f, 0f)
             registry.register(wool, ItemStack(Items.STRING, 1), 0, 0.5f, 0.25f)
-            registry.register(wool, ItemStack(Items.DYE, 1, meta), 0, 1f/8f, 2f)
+            registry.register(wool, ItemStack(Items.DYE, 1, 15-meta), 0, 1f/8f, 2f)
         }
 
     }
