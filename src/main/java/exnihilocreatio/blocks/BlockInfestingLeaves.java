@@ -89,10 +89,14 @@ public class BlockInfestingLeaves extends BlockLeaves implements ITileEntityProv
         } else {
             leafState = state;
         }
+
+        Boolean check_decay = leafState.getPropertyKeys().contains("check_decay") ? leafState.getValue(CHECK_DECAY) : false;
+        Boolean decayable = leafState.getPropertyKeys().contains("decayable") ? leafState.getValue(DECAYABLE) : false;
+
         world.setBlockState(pos,
                 ModBlocks.infestingLeaves.getDefaultState()
-                        .withProperty(CHECK_DECAY, leafState.getValue(CHECK_DECAY))
-                        .withProperty(DECAYABLE, leafState.getValue(DECAYABLE)),
+                        .withProperty(CHECK_DECAY, check_decay)
+                        .withProperty(DECAYABLE, decayable),
                 3);
         if (world.getTileEntity(pos) != null)
             ((ITileLeafBlock) world.getTileEntity(pos)).setLeafBlock(leafState);

@@ -107,7 +107,8 @@ public class ModConfig {
         @Config.Comment({"Enable this to to load the JSON files.",
                 "Keeping this on false will only load recipes registered in code",
                 "This is recommended to enable for Packmakers",
-                "For players just playing with this without wanting to configure something this is recommended to keep disabled"})
+                "For players just playing with this without wanting to configure something this is recommended to keep disabled",
+                "If you are having trouble reading custom json files I suggest using https://jsonlint.com/ to validate your files."})
         public boolean enableJSONLoading = false;
 
         public boolean oredictVanillaItems = true;
