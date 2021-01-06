@@ -34,6 +34,55 @@
             "model": "exnihilocreatio:mesh_diamond"
           }
         }
+      },
+      "bronze": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_bronze"
+          }
+        }
+      },
+      "steel": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_steel"
+          }
+        }
+      },
+      "aluminium": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_aluminium"
+          }
+        }
+      },
+      "stainless": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_stainless"
+          }
+        }
+      },
+      "titanium": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_titanium"
+          }
+        }
+      },
+      "tungstensteel": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_tungstensteel"
+          }
+        }
+      },
+      "naquadah": {
+        "submodel": {
+          "mesh": {
+            "model": "exnihilocreatio:mesh_naquadah"
+          }
+        }
       }
     },
     "normal": [

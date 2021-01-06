@@ -221,7 +221,19 @@ public class BlockSieve extends BlockBase implements ITileEntityProvider, ITOPIn
     }
 
     public enum MeshType implements IStringSerializable {
-        NONE(0, "none"), STRING(1, "string"), FLINT(2, "flint"), IRON(3, "iron"), DIAMOND(4, "diamond"), NO_RENDER(5, "no_render");
+        NONE(0, "none"),
+        STRING(1, "string"),
+        FLINT(2, "flint"),
+        IRON(3, "iron"),
+        DIAMOND(4, "diamond"),
+        BRONZE(5, "bronze"),
+        STEEL(6, "steel"),
+        ALUMINIUM(7, "aluminium"),
+        STAINLESS(8, "stainless"),
+        TITANIUM(9, "titanium"),
+        TUNGSTENSTEEL(10, "tungstensteel"),
+        NAQUADAH(11, "naquadah"),
+        NO_RENDER(12, "no_render");
 
         private final int id;
         private final String name;
@@ -232,7 +244,7 @@ public class BlockSieve extends BlockBase implements ITileEntityProvider, ITOPIn
         }
 
         public boolean isValid(){
-            return id > 0 && id < 5;
+            return id > 0 && id < 12;
         }
 
         public static MeshType getMeshTypeByID(int meta) {
@@ -246,6 +258,20 @@ public class BlockSieve extends BlockBase implements ITileEntityProvider, ITOPIn
                 case 4:
                     return DIAMOND;
                 case 5:
+                    return BRONZE;
+                case 6:
+                    return STEEL;
+                case 7:
+                    return ALUMINIUM;
+                case 8:
+                    return STAINLESS;
+                case 9:
+                    return TITANIUM;
+                case 10:
+                    return TUNGSTENSTEEL;
+                case 11:
+                    return NAQUADAH;
+                case 12:
                     return NO_RENDER;
             }
 

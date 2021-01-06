@@ -113,6 +113,13 @@ item.item_mesh.1.name=String Mesh
 item.item_mesh.2.name=Flint Stiffened Mesh
 item.item_mesh.3.name=Iron Stiffened Mesh
 item.item_mesh.4.name=Diamond Stiffened Mesh
+item.item_mesh.5.name=Bronze Mesh
+item.item_mesh.6.name=Steel Mesh
+item.item_mesh.7.name=Aluminium Mesh
+item.item_mesh.8.name=Stainless Steel Mesh
+item.item_mesh.9.name=Titanium Mesh
+item.item_mesh.10.name=Tungstensteel Mesh
+item.item_mesh.11.name=Naquadah Mesh
 
 orepiece.name=Ore Piece
 orechunk.name=Ore Chunk

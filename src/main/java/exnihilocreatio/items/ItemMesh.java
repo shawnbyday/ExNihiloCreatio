@@ -41,6 +41,20 @@ public class ItemMesh extends Item implements IHasModel {
                 return 14;
             case 4:
                 return 10;
+            case 5:
+                return 11;
+            case 6:
+                return 12;
+            case 7:
+                return 13;
+            case 8:
+                return 16;
+            case 9:
+                return 17;
+            case 10:
+                return 18;
+            case 11:
+                return 19;
             default:
                 return 0;
         }
@@ -78,5 +92,12 @@ public class ItemMesh extends Item implements IHasModel {
         ModelLoader.setCustomModelResourceLocation(this, 2, new ModelResourceLocation("exnihilocreatio:item_mesh_flint"));
         ModelLoader.setCustomModelResourceLocation(this, 3, new ModelResourceLocation("exnihilocreatio:item_mesh_iron"));
         ModelLoader.setCustomModelResourceLocation(this, 4, new ModelResourceLocation("exnihilocreatio:item_mesh_diamond"));
+        ModelLoader.setCustomModelResourceLocation(this, 5, new ModelResourceLocation("exnihilocreatio:item_mesh_bronze"));
+        ModelLoader.setCustomModelResourceLocation(this, 6, new ModelResourceLocation("exnihilocreatio:item_mesh_steel"));
+        ModelLoader.setCustomModelResourceLocation(this, 7, new ModelResourceLocation("exnihilocreatio:item_mesh_aluminium"));
+        ModelLoader.setCustomModelResourceLocation(this, 8, new ModelResourceLocation("exnihilocreatio:item_mesh_stainless"));
+        ModelLoader.setCustomModelResourceLocation(this, 9, new ModelResourceLocation("exnihilocreatio:item_mesh_titanium"));
+        ModelLoader.setCustomModelResourceLocation(this, 10, new ModelResourceLocation("exnihilocreatio:item_mesh_tungstensteel"));
+        ModelLoader.setCustomModelResourceLocation(this, 11, new ModelResourceLocation("exnihilocreatio:item_mesh_naquadah"));
     }
 }
