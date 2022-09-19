@@ -49,6 +49,48 @@ object Sieve {
         CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.DIAMOND)
     }
 
+    @ZenMethod
+    @JvmStatic
+    fun addTungstensteelMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.TUNGSTENSTEEL)
+    }
+
+    @ZenMethod
+    @JvmStatic
+    fun addTitaniumMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.TITANIUM)
+    }
+
+    @ZenMethod
+    @JvmStatic
+    fun addBronzeMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.BRONZE)
+    }
+
+    @ZenMethod
+    @JvmStatic
+    fun addNaquadahMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.NAQUADAH)
+    }
+
+    @ZenMethod
+    @JvmStatic
+    fun addSteelMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.STEEL)
+    }
+
+    @ZenMethod
+    @JvmStatic
+    fun addAluminiumMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.ALUMINIUM)
+    }
+
+    @ZenMethod
+    @JvmStatic
+    fun addStainlessMeshRecipe(block: IIngredient, drop: IItemStack, chance: Float) {
+        CrTIntegration.addActions += AddRecipe(block, drop, chance, BlockSieve.MeshType.STAINLESS)
+    }
+
     private class AddRecipe(
             block: IIngredient,
             private val drop: IItemStack,
