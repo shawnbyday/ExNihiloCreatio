@@ -7,7 +7,7 @@ buildscript {
 
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "https://files.minecraftforge.net/maven"
         }
 
         maven {
@@ -78,28 +78,28 @@ repositories
     // Required for TheOneProbe
     maven {
         name "tterrag"
-        url "http://maven.tterrag.com"
+        url "https://maven.tterrag.com"
     }
 
     // Required for RedstoneFlux which is required for TheOneProbe
     maven {
         name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
+        url = "https://maven.covers1624.net"
     }
 
     // crt
     maven {
-        url "http://maven.blamejared.com"
+        url "https://maven.blamejared.com"
     }
 
     // for code chicken libs
     maven {
-        url "http://chickenbones.net/maven/"
+        url "https://chickenbones.net/maven/"
     }
 
     // for forgelin
     maven {
-        url "http://maven.shadowfacts.net/"
+        url "https://maven.shadowfacts.net/"
     }
 }
 
